@@ -782,7 +782,7 @@ export const videoDosyalari = {
     "w": 478,
     "h": 850,
     "sureSn": 100,
-    "boyutKb": 13697
+    "boyutKb": 9128
   },
   "ciftlik-kahverengi-yumurtacilar-02": {
     "src": "/videos/ciftlik-kahverengi-yumurtacilar-02.mp4",
@@ -798,7 +798,7 @@ export const videoDosyalari = {
     "w": 478,
     "h": 850,
     "sureSn": 85,
-    "boyutKb": 12161
+    "boyutKb": 7822
   },
   "ciftlik-koyu-renkli-yarkalar-01": {
     "src": "/videos/ciftlik-koyu-renkli-yarkalar-01.mp4",

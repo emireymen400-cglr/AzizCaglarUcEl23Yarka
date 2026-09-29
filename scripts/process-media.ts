@@ -79,7 +79,8 @@ const anasayfaGorselleri: [string, string][] = [
   ["pexels-enginakyurt-1769279.jpg", "farkli-renkte-tavuklar"],
 ];
 
-type VideoTanim = { kaynak: string; ad: string; sessiz: boolean; sureSn?: number; not: string };
+// crf: varsayılan 28. 10 MB sınırını aşan uzun telefon videoları için 32 (YouTube'a taşınana kadar geçici).
+type VideoTanim = { kaynak: string; ad: string; sessiz: boolean; sureSn?: number; crf?: number; not: string };
 const WV = (saat: string) => path.join("google-isletme", `WhatsApp Video 2026-09-29 at ${saat}.mp4`);
 const videolar: VideoTanim[] = [
   { kaynak: "videolar/2.mp4", ad: "hero-cayirda-tavuklar", sessiz: true, sureSn: 10, not: "Stok · ana sayfa hero (döngü)" },
@@ -87,9 +88,9 @@ const videolar: VideoTanim[] = [
   { kaynak: "videolar/1.mp4", ad: "bahcede-karisik-tavuklar", sessiz: true, not: "Stok · galeri" },
   { kaynak: "videolar/3.mp4", ad: "horoz-ve-tavuklar", sessiz: false, not: "Stok · galeri" },
   { kaynak: "videolar/5.mp4", ad: "toprakta-eselenen-tavuklar", sessiz: true, not: "Stok · galeri" },
-  { kaynak: WV("13.14.48"), ad: "ciftlik-kahverengi-yumurtacilar-01", sessiz: false, not: "Çiftlik" },
+  { kaynak: WV("13.14.48"), ad: "ciftlik-kahverengi-yumurtacilar-01", sessiz: false, crf: 32, not: "Çiftlik · YouTube'a taşınacak" },
   { kaynak: WV("13.14.53"), ad: "ciftlik-kahverengi-yumurtacilar-02", sessiz: false, not: "Çiftlik" },
-  { kaynak: WV("13.15.22"), ad: "ciftlik-kahverengi-yumurtacilar-03", sessiz: false, not: "Çiftlik" },
+  { kaynak: WV("13.15.22"), ad: "ciftlik-kahverengi-yumurtacilar-03", sessiz: false, crf: 32, not: "Çiftlik · YouTube'a taşınacak" },
   { kaynak: WV("13.16.29"), ad: "ciftlik-koyu-renkli-yarkalar-01", sessiz: false, not: "Çiftlik" },
   { kaynak: WV("13.16.50 (2)"), ad: "ciftlik-koyu-renkli-yarkalar-02", sessiz: false, not: "Çiftlik" },
   { kaynak: WV("13.16.30"), ad: "ciftlik-beyaz-yarkalar-01", sessiz: false, not: "Çiftlik" },
@@ -309,7 +310,7 @@ async function videoIsle(v: VideoTanim): Promise<VideoSonuc> {
       ...(v.sureSn ? ["-t", String(v.sureSn)] : []),
       "-map_metadata", "-1",
       "-vf", olcek,
-      "-c:v", "libx264", "-preset", "slow", "-crf", "28", "-pix_fmt", "yuv420p",
+      "-c:v", "libx264", "-preset", "slow", "-crf", String(v.crf ?? 28), "-pix_fmt", "yuv420p",
       ...(v.sessiz ? ["-an"] : ["-c:a", "aac", "-b:a", "96k"]),
       "-movflags", "+faststart",
       hedef,

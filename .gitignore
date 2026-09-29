@@ -44,6 +44,3 @@ next-env.d.ts
 # Kaynak dosyalar (sadece işlenmiş çıktılar public/ altına girer)
 /_kaynaklar/
 
-# 10 MB üstü videolar — YouTube / Vercel Blob kararı bekleniyor (EKSIKLER.md)
-/public/videos/ciftlik-kahverengi-yumurtacilar-01.mp4
-/public/videos/ciftlik-kahverengi-yumurtacilar-03.mp4

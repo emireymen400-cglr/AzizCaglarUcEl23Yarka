@@ -8,7 +8,8 @@ Son güncelleme: 2026-09-29 (ikinci cevap turu işlendi, Faz 1 başladı).
 - [ ] **Search Console** — `ucel23yarka.com` alındıktan sonra kurulacak. HATIRLAT. Domain alınınca: Vercel'de eski domainden 301, Search Console "Adres değişikliği".
 - [ ] **KVKK veri sorumlusu unvanı:** Vergi bilgisi geldi (aşağıda). Metinde "Aziz Çağlar – Üçel 23 Tavukçuluk" yazılacak. Resmi unvan farklıysa kullanıcı düzeltmeli.
 - [ ] **TikTok / YouTube** — hesaplar açılınca eklenecek (şu an sitede GÖSTERİLMEYECEK).
-- [ ] **10 MB üstü videolar:** `ciftlik-kahverengi-yumurtacilar-01` (13,4 MB, 100 sn) ve `-03` (11,9 MB, 85 sn). Seçenekler: YouTube, Vercel Blob ya da daha güçlü sıkıştırma (CRF 32 → 8,1 / 7,0 MB). Karar verilene kadar git dışında (.gitignore).
+- [ ] **EN SON YAPILACAK — YouTube:** Kullanıcı YouTube kanalı açacak. Açılınca `ciftlik-kahverengi-yumurtacilar-01` (100 sn) ve `-03` (85 sn) YouTube'a taşınacak, `lite-youtube` ile gömülecek, VideoObject'e YouTube URL'si eklenecek; kanal linki `site.ts` sosyal hesaplara eklenecek. Şimdilik CRF 32 ile 8,9 / 7,6 MB olarak sitede.
+- [ ] **Vercel kotası:** Kullanıcı Vercel bant genişliği kotasına dikkat edilmesini istedi. Videolar `preload="none"` + poster ile yüklenecek (hero hariç), galeri görselleri lazy; yayından sonra Vercel Usage sayfası kontrol edilecek.
 
 ## İkinci cevap turu (2026-09-29)
 
