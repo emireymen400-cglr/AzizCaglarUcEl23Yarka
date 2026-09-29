@@ -151,7 +151,13 @@ Yeni tür eklemek, fotoğraf/video eklemek ve siteyi yayına almadan önce görm
    pnpm install
    ```
 6. `.env.example` dosyasını kopyalayıp adını `.env.local` yapın. İçinde GA4 ölçüm kimliği var. Bu dosya git'e girmez; yerelde test ederken analitiğe gerçek veri gitmesin istiyorsanız içindeki satırı silin.
-7. **Kaynak klasörü:** Orijinal fotoğraflar, videolar ve font kaynakları `_kaynaklar/` klasöründedir ve **git'e yüklenmez**. Bu klasörü bilgisayarınıza ayrıca kopyalayın ve **mutlaka yedekleyin** (harici disk, Google Drive). Kaybolursa sitedeki görseller çalışmaya devam eder, ama yeniden işlenemez.
+7. **Kaynak klasörü:** Orijinal fotoğraflar, videolar ve font kaynakları `_kaynaklar/` klasöründedir ve **git'e yüklenmez** (~600 MB). Yedeği Google Drive'dadır:
+
+   **📁 [`_kaynaklar` — Google Drive](https://drive.google.com/drive/folders/1y3iXgCOLIJHV_ZUhww5MSYndylpMg0nb)**
+
+   Drive'daki `_kaynaklar` klasörünü indirip projenin ana klasörüne (`package.json`'ın yanına) koyun. Erişim Drive'ın paylaşım ayarıyla kontrol edilir.
+
+   > **Yeni fotoğraf/video eklediğinizde orijinalini Drive'daki klasöre de koyun.** Siteye giden işlenmiş kopyalar GitHub'da, orijinaller Drive'da durur. Kaybolursa sitedeki görseller çalışmaya devam eder, ama yeniden işlenemez.
 
 ### 2.2 Günlük komutlar
 
@@ -307,7 +313,7 @@ Gerçek çiftlik fotoğrafları için aynı mantık `_kaynaklar/google-isletme/`
 ### 2.5 Klasör yapısı
 
 ```
-_kaynaklar/            Orijinal fotoğraf, video, font (git DIŞI — yedekleyin!)
+_kaynaklar/            Orijinal fotoğraf, video, font (git DIŞI — yedeği Google Drive'da, bkz. 2.1)
 assets/fonts/          Paylaşım görselleri için Bebas Neue + font lisansları
 public/                İşlenmiş görseller, videolar, logo (betik üretir)
 scripts/

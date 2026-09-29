@@ -101,4 +101,6 @@ Sayfa bazlı yönlendirmeler (`/kurumsal` → `/hakkimizda` vb.) sitede hazır (
 
 ## Teknik notlar
 
+- `_kaynaklar/` yedeği Google Drive'da (kullanıcı yükledi, 2026-09-29): https://drive.google.com/drive/folders/1y3iXgCOLIJHV_ZUhww5MSYndylpMg0nb — README 2.1'de. Denetim: 188 görselde GPS yok, videolarda konum kaydı yok. Klasör şu an "bağlantıya sahip olan herkes" ile paylaşılıyor.
+
 - `ffmpeg` 9.0.2 kuruldu (winget). Yeni açılan terminalde PATH'te görünüyor.
