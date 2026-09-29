@@ -23,7 +23,7 @@ export function Footer() {
         <Container className="relative">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
             <div>
-              <Image src="/logo.png" alt={site.ad} width={842} height={737} className="h-24 w-auto" />
+              <Image src="/logo.png" alt={site.ad} width={842} height={737} sizes="110px" className="h-24 w-auto" />
               <p className="mt-5 max-w-xs text-white/85">
                 Konya Karatay&apos;daki çiftliğimizden Türkiye&apos;nin tüm il ve ilçelerine yumurtacı yarka.
               </p>

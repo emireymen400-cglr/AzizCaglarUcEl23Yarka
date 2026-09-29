@@ -43,7 +43,8 @@ export default function Teslimat() {
               alt={teslimatGorseli.alt}
               width={b.w}
               height={b.h}
-              priority
+              preload
+              fetchPriority="high"
               sizes="(min-width: 1024px) 560px, 90vw"
               className="relative aspect-[4/5] w-full rounded-card object-cover"
             />

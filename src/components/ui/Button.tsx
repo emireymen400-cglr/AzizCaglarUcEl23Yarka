@@ -31,8 +31,7 @@ type Props = {
 
 const temel =
   "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-button px-8 py-4 md:px-10 md:py-[18px] " +
-  "font-label text-[13px] font-medium uppercase tracking-[0.12em] leading-none transition-colors " +
-  "focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-orange";
+  "font-label text-[13px] font-medium uppercase tracking-[0.12em] leading-none transition-colors";
 
 export function Button({ href, children, tur: t = "primary", ikon, olay, olayTur, className, ...aria }: Props) {
   const harici = /^(https?:|tel:|mailto:)/.test(href);

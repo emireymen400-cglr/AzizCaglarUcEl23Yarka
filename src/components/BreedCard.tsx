@@ -55,7 +55,7 @@ export function BreedCard({ tur, baslikSeviyesi: H = "h3", sira = 0, className, 
             {/* Kartın tamamı tıklanabilir: bağlantı alanı ::after ile kartı kaplar */}
             <Link
               href={`/tavuklarimiz/${tur.slug}`}
-              className="after:absolute after:inset-0 after:z-20 after:rounded-card focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-3 focus-visible:after:outline-orange"
+              className="after:absolute after:inset-0 after:z-20 after:rounded-card focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-3 focus-visible:after:outline-orange-text"
             >
               {tur.ad}
             </Link>

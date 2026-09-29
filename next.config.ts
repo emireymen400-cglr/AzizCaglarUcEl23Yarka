@@ -17,6 +17,8 @@ const eskiYollar: [string, string][] = [
 ];
 
 const nextConfig: NextConfig = {
+  // Hero posteri için 60 (mobilde fark görünmüyor, ~%30 daha küçük)
+  images: { qualities: [60, 75] },
   async redirects() {
     return eskiYollar.flatMap(([eski, yeni]) => {
       const kodlu = encodeURI(eski);

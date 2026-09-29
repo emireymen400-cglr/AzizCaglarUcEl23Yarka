@@ -7,7 +7,7 @@ export type Zemin = "krem" | "beyaz" | "turuncu" | "lacivert";
 export const zeminSinifi: Record<Zemin, string> = {
   krem: "bg-cream text-ink",
   beyaz: "bg-white text-ink",
-  turuncu: "bg-orange text-white",
+  turuncu: "bg-orange-deep text-white",
   lacivert: "bg-indigo text-white",
 };
 

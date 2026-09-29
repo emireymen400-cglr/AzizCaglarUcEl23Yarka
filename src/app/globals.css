@@ -7,6 +7,8 @@
   --color-yolk: #ffc400;
   --color-orange: #ed7328;
   --color-orange-text: #b8561a;
+  /* Beyaz metinli turuncu bant: #ed7328 üzerinde beyaz 2.96:1 (AA geçmez), bu tonda 4.79:1 */
+  --color-orange-deep: #b8561a;
   --color-sky: #6aa8dc;
   --color-straw: #d2b68c;
   --color-pasture: #a2d3a6;
@@ -72,9 +74,13 @@
     text-transform: uppercase;
   }
 
+  /* Odak halkası: kremde 4.56:1 (turuncu #ed7328 2.82:1 kalıyordu); koyu zeminde beyaz */
   :focus-visible {
-    outline: 2px solid var(--color-orange);
+    outline: 2px solid var(--color-orange-text);
     outline-offset: 3px;
+  }
+  :is(.bg-indigo, .bg-orange-deep, [class*="bg-ink/"]) :focus-visible {
+    outline-color: var(--color-white);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -101,13 +107,17 @@
   vector-effect: non-scaling-stroke;
 }
 
-/* Hero'daki tek orkestre an: çizgiler kendini çizer, lekeler belirir (DESIGN.md §8) */
-@media (prefers-reduced-motion: no-preference) {
+/* Hero'daki tek orkestre an: çizgiler kendini çizer, lekeler belirir (DESIGN.md §8).
+   Çizgi çizme (stroke-dashoffset) GPU'da çalışmadığı için mobilde ana iş parçacığını ~1 sn
+   meşgul ediyordu; sadece geniş ekranda. Leke belirişi (opacity/scale) her yerde. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
   .cizim-animasyon :is(path, circle) {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
     animation: cizgi-ciz 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
   }
+}
+@media (prefers-reduced-motion: no-preference) {
   .leke-belir {
     opacity: 0;
     transform-origin: center;

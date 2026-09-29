@@ -1,6 +1,6 @@
 # EKSIKLER.md — Kullanıcıdan beklenen bilgiler
 
-Son güncelleme: 2026-09-29 (ikinci cevap turu işlendi, Faz 1 başladı).
+Son güncelleme: 2026-09-29 (yayın öncesi denetim sonrası).
 
 ## Açık kalanlar (sonra sorulacak / hatırlatılacak)
 
@@ -9,7 +9,12 @@ Son güncelleme: 2026-09-29 (ikinci cevap turu işlendi, Faz 1 başladı).
 - [ ] **KVKK veri sorumlusu unvanı:** Vergi bilgisi geldi (aşağıda). Metinde "Aziz Çağlar – Üçel 23 Tavukçuluk" yazılacak. Resmi unvan farklıysa kullanıcı düzeltmeli.
 - [ ] **TikTok / YouTube** — hesaplar açılınca eklenecek (şu an sitede GÖSTERİLMEYECEK).
 - [ ] **EN SON YAPILACAK — YouTube:** Kullanıcı YouTube kanalı açacak. Açılınca `ciftlik-kahverengi-yumurtacilar-01` (100 sn) ve `-03` (85 sn) YouTube'a taşınacak, `lite-youtube` ile gömülecek, VideoObject'e YouTube URL'si eklenecek; kanal linki `site.ts` sosyal hesaplara eklenecek. Şimdilik CRF 32 ile 8,9 / 7,6 MB olarak sitede.
-- [ ] **Vercel kotası:** Kullanıcı Vercel bant genişliği kotasına dikkat edilmesini istedi. Videolar `preload="none"` + poster ile yüklenecek (hero hariç), galeri görselleri lazy; yayından sonra Vercel Usage sayfası kontrol edilecek.
+- [ ] **Vercel kotası:** Uygulandı: videolar tıklayınca yüklenir (hero hariç, o da sayfa yüklendikten sonra), galeri hazır küçük görseller (360/640px) kullanır, next/image yalnızca ~40 görsel için. Yayından sonra Vercel → Usage sayfası kontrol edilecek.
+- [ ] **Facebook linki:** Verilen `facebook.com/share/r/1DPdBjTeEA/` bir sayfaya değil tek bir gönderiye (story.php) gidiyor ve giriş istiyor (denetim 2026-09-29). İşletme sayfasının kalıcı adresi (facebook.com/<sayfa-adı> veya profile.php?id=…) gelirse `site.ts`'de değiştirilecek; JSON-LD sameAs da bunu kullanıyor.
+- [ ] **Sahibinden mağaza linki:** Otomatik istekte 403 + giriş sayfasına yönlendirme (bot koruması olabilir). Kullanıcı tarayıcıda oturum açmadan açıldığını teyit etmeli.
+- [ ] **Yayından sonra PageSpeed Insights:** Yerel Lighthouse (HTTP/1.1, gzip) mobil Performance: ana sayfa 88, tür 92–93, galeri 85–86. Vercel'de (HTTP/2, Brotli, CDN) pagespeed.web.dev ile tekrar ölçülecek; 90 altı kalırsa hero posteri ve galeri ilk satırı yeniden ele alınacak.
+- [ ] **GA4 panel ayarı:** Admin → Özel tanımlar: `sayfa_yolu` ve `tur` etkinlik kapsamlı boyut olarak eklenmeli; Vercel'e `NEXT_PUBLIC_GA_ID` ortam değişkeni girilmeli.
+- [ ] **KVKK ve çerez metni:** Genel şablon; yayından önce hukukçu kontrolü önerilir.
 
 ## İkinci cevap turu (2026-09-29)
 

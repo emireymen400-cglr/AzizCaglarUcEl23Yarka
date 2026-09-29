@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { preload } from "react-dom";
 import { BreedCard } from "@/components/BreedCard";
 import { CtaBolumu } from "@/components/CtaBolumu";
 import { FaqAccordion } from "@/components/FaqAccordion";
@@ -56,8 +55,6 @@ const neden = "/images/anasayfa/cayirda-kahverengi-yarka-surusu.webp";
 export default function AnaSayfa() {
   const hero = videoDosyalari["hero-cayirda-tavuklar"];
   const bolumVideosu = videolar.find((v) => v.ad === "dag-eteginde-serbest-tavuklar")!;
-  // Hero posteri LCP öğesi: erken yükle
-  preload(hero.poster, { as: "image", fetchPriority: "high" });
 
   return (
     <>
@@ -94,7 +91,7 @@ export default function AnaSayfa() {
             <Blob renk="yolk" sekil={0} belir className="absolute -right-24 -top-16 w-[115%] md:-right-32" />
             <Blob renk="pasture" sekil={2} dondur={40} belir className="gecikmeli absolute -bottom-14 -left-16 w-1/2" />
             <div className="relative overflow-hidden rounded-card border-[6px] border-white bg-white lg:-rotate-2">
-              <HeroVideo src={hero.src} poster={hero.poster} className="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" />
+              <HeroVideo src={hero.src} poster={hero.poster} posterW={hero.w} posterH={hero.h} className="aspect-[4/3] w-full lg:aspect-[4/5]" />
             </div>
             <BugdayBasagi ciz className="absolute -bottom-10 -left-6 w-16 rotate-[-8deg] text-indigo md:w-20 lg:-left-12" />
           </div>
@@ -103,7 +100,7 @@ export default function AnaSayfa() {
 
       {/* ---------------------------------------------------------------- TAVUKLARIMIZ */}
       <WaveDivider ust="krem" alt="turuncu" />
-      <section className="-mt-px bg-orange pb-16 pt-8 text-white md:pb-24" aria-labelledby="turler-baslik">
+      <section className="-mt-px bg-orange-deep pb-16 pt-8 text-white md:pb-24" aria-labelledby="turler-baslik">
         <Container>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>

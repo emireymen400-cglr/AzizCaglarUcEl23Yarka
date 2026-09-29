@@ -51,7 +51,7 @@ export default function Galeri() {
           Çiftliğimizden
         </h2>
         <div className="mt-8">
-          <GaleriIzgarasi etiket="Çiftliğimizden fotoğraf ve videolar" ogeler={ciftlik} />
+          <GaleriIzgarasi etiket="Çiftliğimizden fotoğraf ve videolar" ogeler={ciftlik} oncelikli={2} />
         </div>
       </Section>
 

@@ -4,13 +4,13 @@ import type { Zemin } from "./Section";
 const dolgu: Record<Zemin, string> = {
   krem: "fill-cream",
   beyaz: "fill-white",
-  turuncu: "fill-orange",
+  turuncu: "fill-orange-deep",
   lacivert: "fill-indigo",
 };
 const zemin: Record<Zemin, string> = {
   krem: "bg-cream",
   beyaz: "bg-white",
-  turuncu: "bg-orange",
+  turuncu: "bg-orange-deep",
   lacivert: "bg-indigo",
 };
 

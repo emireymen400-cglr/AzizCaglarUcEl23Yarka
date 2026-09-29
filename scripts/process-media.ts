@@ -8,6 +8,7 @@
 //   public/images/tavuklar/<slug>/<slug>-yarka-NN.webp   (tür klasörleri)
 //   public/images/galeri/galeri-NN.webp                  (_kaynaklar/resimler = "karışık")
 //   public/images/{galeri,ciftlik}/kucuk/*.webp           (640px ızgara sürümü)
+//   public/images/{galeri,ciftlik}/mini/*.webp            (360px mobil ızgara sürümü)
 //   public/images/ciftlik/*.webp                          (Google İşletme, gerçek çiftlik)
 //   public/images/anasayfa/*.webp                         (ana sayfa seçkisi)
 //   public/videos/<ad>.mp4 + <ad>-poster.webp
@@ -153,6 +154,8 @@ const DUSUK_COZUNURLUK = 1200; // en uzun kenar
 
 /** Galeri ızgarası için hazır küçük sürüm (Vercel görsel dönüştürme kotasını harcamamak için) */
 const KUCUK_KENAR = 640;
+/** Mobil 2 sütunlu ızgara için (srcset 360w) */
+const MINI_KENAR = 360;
 
 async function gorselIsle(kaynak: string, hedefGoreli: string, grup: string, kucukSurum = false) {
   const hedef = path.join(PUB, hedefGoreli);
@@ -170,6 +173,10 @@ async function gorselIsle(kaynak: string, hedefGoreli: string, grup: string, kuc
     fs.mkdirSync(path.dirname(kucuk), { recursive: true });
     if (YENIDEN || !fs.existsSync(kucuk))
       await sharp(hedef).resize(KUCUK_KENAR, KUCUK_KENAR, { fit: "inside", withoutEnlargement: true }).webp({ quality: 72 }).toFile(kucuk);
+    const mini = path.join(path.dirname(hedef), "mini", path.basename(hedef));
+    fs.mkdirSync(path.dirname(mini), { recursive: true });
+    if (YENIDEN || !fs.existsSync(mini))
+      await sharp(hedef).resize(MINI_KENAR, MINI_KENAR * 2, { fit: "inside", withoutEnlargement: true }).webp({ quality: 70 }).toFile(mini);
   }
   const m = await sharp(hedef).metadata();
   const url = "/" + hedefGoreli.split(path.sep).join("/");
@@ -332,6 +339,12 @@ async function videoIsle(v: VideoTanim): Promise<VideoSonuc> {
     ff(["-i", hedef, "-frames:v", "1", gecici]);
     await sharp(gecici).webp({ quality: 78 }).toFile(poster);
     fs.rmSync(gecici);
+  }
+  // Izgara / tembel poster için küçük sürümler (poster tam boyu sayfa açılışını yavaşlatıyordu)
+  for (const [klasor, kenar, kalite] of [["kucuk", KUCUK_KENAR, 72], ["mini", MINI_KENAR, 70]] as const) {
+    const k = path.join(PUB, "videos", klasor, `${v.ad}-poster.webp`);
+    fs.mkdirSync(path.dirname(k), { recursive: true });
+    if (YENIDEN || !fs.existsSync(k)) await sharp(poster).resize(kenar, kenar * 2, { fit: "inside", withoutEnlargement: true }).webp({ quality: kalite }).toFile(k);
   }
   const pm = await sharp(poster).metadata();
   return {

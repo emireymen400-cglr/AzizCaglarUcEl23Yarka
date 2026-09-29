@@ -17,11 +17,21 @@ export type GaleriOgesi =
     }
   | { tur: "video"; src: string; poster: string; baslik: string; w: number; h: number };
 
+// Gerçek sütun genişliği: mobilde 2 sütun, 20px kenar boşluğu + 12px aralık
+const IZGARA_SIZES = "(min-width: 1200px) 280px, (min-width: 1024px) 23vw, (min-width: 768px) 31vw, calc(50vw - 26px)";
+const GORSEL_SINIF = "size-full object-cover transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transition-none";
+const miniYol = (kucuk: string) => kucuk.replace("/kucuk/", "/mini/");
+const posterKucuk = (p: string) => p.replace("/videos/", "/videos/kucuk/");
+const posterMini = (p: string) => p.replace("/videos/", "/videos/mini/");
+
 /**
  * Düzensiz (masonry) ızgara + klavyeyle gezilebilen lightbox (<dialog>).
  * Izgarada hazır 640px küçük sürümler kullanılır (Vercel görsel dönüştürme kotası harcanmaz).
  */
-export function GaleriIzgarasi({ ogeler, etiket }: { ogeler: GaleriOgesi[]; etiket: string }) {
+/**
+ * @param oncelikli İlk ekrana giren kaç görsel lazy olmasın (LCP). Sadece sayfanın ilk ızgarasında verilir.
+ */
+export function GaleriIzgarasi({ ogeler, etiket, oncelikli = 0 }: { ogeler: GaleriOgesi[]; etiket: string; oncelikli?: number }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [acikIndex, setAcikIndex] = useState<number | null>(null);
 
@@ -55,25 +65,46 @@ export function GaleriIzgarasi({ ogeler, etiket }: { ogeler: GaleriOgesi[]; etik
 
   return (
     <>
-      <ul className="columns-2 gap-3 md:columns-3 md:gap-4 lg:columns-4" aria-label={etiket}>
+      {/* Düzensiz ızgara (DESIGN.md §6): satır sırasıyla dolar, böylece ilk ekrandaki görseller
+          gerçekten listenin başındakilerdir (CSS columns ile 2. sütunun tepesi listenin ortasıydı → geç LCP).
+          Dikey görseller 2 satır, yataylar 1 satır kaplar; dense akış boşlukları doldurur. */}
+      <ul
+        className="grid grid-flow-row-dense auto-rows-[9.5rem] grid-cols-2 gap-3 md:auto-rows-[11rem] md:grid-cols-3 md:gap-4 lg:grid-cols-4"
+        aria-label={etiket}
+      >
         {ogeler.map((o, i) => (
-          <li key={o.tur === "gorsel" ? o.kucuk : o.src} className="mb-3 break-inside-avoid md:mb-4">
+          <li key={o.tur === "gorsel" ? o.kucuk : o.src} className={o.h / o.w > 0.9 ? "row-span-2" : "row-span-1"}>
             <button
               type="button"
               onClick={() => ac(i)}
-              className="group relative block w-full overflow-hidden rounded-card bg-straw/20"
+              className="group relative block size-full overflow-hidden rounded-card bg-straw/20"
               aria-label={o.tur === "gorsel" ? `Büyüt: ${o.alt}` : `Videoyu oynat: ${o.baslik}`}
             >
-              <Image
-                src={o.tur === "gorsel" ? o.kucuk : o.poster}
-                alt=""
-                width={o.w}
-                height={o.h}
-                unoptimized={!(o.tur === "gorsel" && o.optimize)}
-                sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
-                loading="lazy"
-                className="h-auto w-full transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transition-none"
-              />
+              {o.tur === "gorsel" && o.optimize ? (
+                <Image
+                  src={o.kucuk}
+                  alt=""
+                  width={o.w}
+                  height={o.h}
+                  sizes={IZGARA_SIZES}
+                  className={GORSEL_SINIF}
+                />
+              ) : (
+                // Hazır küçük sürümler (Vercel görsel dönüştürme kotası harcanmaz); ilk görseller hemen yüklenir
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={o.tur === "gorsel" ? o.kucuk : posterKucuk(o.poster)}
+                  srcSet={o.tur === "gorsel" ? `${miniYol(o.kucuk)} 360w, ${o.kucuk} 640w` : `${posterMini(o.poster)} 360w, ${posterKucuk(o.poster)} 640w`}
+                  sizes={IZGARA_SIZES}
+                  alt=""
+                  width={o.w}
+                  height={o.h}
+                  loading={i < oncelikli ? "eager" : "lazy"}
+                  fetchPriority={i < Math.min(oncelikli, 2) ? "high" : undefined}
+                  decoding="async"
+                  className={GORSEL_SINIF}
+                />
+              )}
               {o.tur === "video" ? (
                 <span className="absolute inset-0 flex items-center justify-center">
                   <span className="flex size-14 items-center justify-center rounded-full bg-white/90 text-indigo">

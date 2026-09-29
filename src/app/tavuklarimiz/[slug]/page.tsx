@@ -134,7 +134,9 @@ export default async function TurSayfasi({ params }: PageProps<"/tavuklarimiz/[s
                 alt={kapak.alt}
                 width={kb.w}
                 height={kb.h}
-                priority
+                preload
+                fetchPriority="high"
+                quality={60}
                 sizes="(min-width: 1024px) 448px, (min-width: 640px) 384px, 90vw"
                 className="relative aspect-[4/5] w-full rounded-card object-cover shadow-card lg:rotate-2"
               />

@@ -80,7 +80,7 @@ export function Header() {
       </a>
       <div className="mx-auto flex h-18 max-w-[1200px] items-center justify-between gap-4 px-5 md:h-20 md:px-8">
         <Link href="/" className="shrink-0" aria-label={`${site.ad} – Ana sayfa`}>
-          <Image src="/logo.png" alt="" width={842} height={737} priority className="h-13 w-auto md:h-15" />
+          <Image src="/logo.png" alt="" width={842} height={737} loading="eager" sizes="70px" className="h-13 w-auto md:h-15" />
         </Link>
 
         <nav aria-label="Ana menü" className="hidden lg:block">
@@ -145,7 +145,7 @@ export function Header() {
           className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-cream px-5 pb-10 pt-4 lg:hidden"
         >
           <div className="flex items-center justify-between">
-            <Image src="/logo.png" alt="" width={842} height={737} className="h-13 w-auto" />
+            <Image src="/logo.png" alt="" width={842} height={737} sizes="60px" className="h-13 w-auto" />
             <button
               type="button"
               onClick={() => setAcik(false)}

@@ -27,7 +27,7 @@ export function TeslimatAdimlari({ baslikSeviyesi: H = "h3" }: { baslikSeviyesi?
         return (
           <li key={a.no} className="relative rounded-card bg-white p-6 pt-5">
             <div className="flex items-end justify-between gap-4">
-              <span className="font-display text-[56px] leading-none text-orange" aria-hidden>
+              <span className="font-display text-[56px] leading-none text-orange-text" aria-hidden>
                 {String(a.no).padStart(2, "0")}
               </span>
               <C className="h-14 w-auto text-indigo" />

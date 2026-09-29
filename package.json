@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "media": "node scripts/process-media.ts"
+    "media": "node scripts/process-media.ts",
+    "fontlar": "node scripts/fontlari-hazirla.ts"
   },
   "dependencies": {
     "lucide-react": "^1.48.0",
@@ -25,6 +26,7 @@
     "eslint-config-next": "16.3.7",
     "ffmpeg-static": "^5.3.0",
     "sharp": "^0.35.5",
+    "subset-font": "^2.9.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
