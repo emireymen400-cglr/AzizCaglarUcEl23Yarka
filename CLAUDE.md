@@ -1,5 +1,3 @@
-@AGENTS.md
-
 # CLAUDE.md — Üçel 23 Yarka Web Sitesi
 
 Bu dosya projenin kalıcı hafızasıdır. Her oturumun başında oku. Tasarım kuralları `DESIGN.md` dosyasındadır; görsel bir iş yapmadan önce onu da oku.

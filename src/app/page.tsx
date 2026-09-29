@@ -31,7 +31,6 @@ const anasayfaGorselleri = [
   ["/images/anasayfa/folluktaki-kahverengi-yumurtalar.webp", "Teslimat bölümü"],
 ] as const;
 
-const TEST = "ĞÜŞİÖÇ ğüşıöç İSTANBUL ıi";
 
 export default function Onizleme() {
   const hero = videoDosyalari["hero-cayirda-tavuklar"];
@@ -43,17 +42,9 @@ export default function Onizleme() {
       <h1 className="mt-2 text-h1">Sağlıklı yarka, kapınıza kadar</h1>
       <p className="font-script text-script text-indigo">Konya&apos;daki çiftliğimizden kümesinize</p>
 
-      <section className="mt-16">
-        <h2 className="text-h2">Font testi</h2>
-        <div className="mt-6 space-y-3">
-          <p className="font-display text-h2 tracking-[0.04em] text-indigo">{TEST}</p>
-          <p className="font-tracked text-label">{TEST}</p>
-          <p className="font-body">{TEST} — Inter 400</p>
-          <p className="font-body font-semibold">{TEST} — Inter 600</p>
-          <p className="font-script text-script">{TEST}</p>
-          <p className="font-tracked text-label">tavuklarımız · teslimat · iletişim (CSS büyük harf, lang=&quot;tr&quot;)</p>
-        </div>
-      </section>
+      <p className="mt-4 text-sm">
+        Font testi için: <a className="text-indigo underline" href="/font-test">/font-test</a>
+      </p>
 
       <section className="mt-16">
         <h2 className="text-h2">Renkler</h2>
