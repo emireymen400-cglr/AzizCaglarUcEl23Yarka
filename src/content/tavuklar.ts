@@ -1,5 +1,6 @@
-// Tür içerikleri. Kaynak: _kaynaklar/<TÜR>/hakkında.txt (üslup sadeleştirildi, yeni bilgi eklenmedi).
-// Sayısal veriler yalnızca doğrulanabilen kaynaklardan gelir; bilinmeyen alan boş bırakılır ("—").
+// Tür içerikleri.
+// Kaynak: _kaynaklar/<TÜR>/hakkında.txt ve EKSIKLER.md'deki kullanıcı cevapları.
+// Metinlerin üslubu sadeleştirildi, yeni bilgi eklenmedi. Kaynakta olmayan alan undefined kalır.
 
 export type Accent = "yolk" | "orange" | "pasture" | "sky" | "straw";
 
@@ -14,15 +15,7 @@ export type Ozellik = {
   metin: string;
 };
 
-export type SayisalVeri = {
-  /** Ör. "140–145. gün" */
-  ilkYumurta?: string;
-  /** Ör. "72. haftaya kadar 321 yumurta" */
-  verim?: string;
-  yumurtaAgirligi?: string;
-  /** Verinin kaynağı; varsa sayfada gösterilir */
-  kaynak?: { ad: string; url?: string };
-};
+export type Kaynak = { ad: string; url?: string };
 
 export type EkBolum = {
   baslik: string;
@@ -36,21 +29,30 @@ export type Tur = {
   ad: string;
   /** Metinde bir kez doğal geçecek arama varyantı (ör. "Lohman Brown") */
   aramaVaryanti?: string;
-  tip: "Hibrit" | "Saf ırk" | "Yerli hibrit";
+  /** Kaynak metindeki tanım */
+  tip: "Hibrit" | "Irk" | "Yerli ırk";
   kullanim: "Yumurtacı" | "Yumurta ve et";
+  /** Kart ve liste için tek cümle */
+  kisaAciklama: string;
+  /** Detay sayfası paragrafları */
+  uzunAciklama: string[];
   yumurtaRengi: string;
-  /** Kart ve meta description için tek cümle */
-  ozet: string;
-  /** Detay sayfası giriş paragrafları */
-  aciklama: string[];
+  yillikVerim?: string;
+  ilkYumurtaHaftasi?: string;
+  satisHaftalari?: string;
+  iklim?: string;
+  /** Sayısal verinin kaynağı (varsa sayfada gösterilir) */
+  veriKaynagi?: Kaynak;
   ozellikler: Ozellik[];
-  /** Kısa rozet listesi ("Üçel Yarka ürün kartı") */
+  /** Kısa rozet listesi (.txt'deki "Üçel Yarka ürün kartı") */
   kart: string[];
-  veri: SayisalVeri;
-  /** Uygun yetiştirme sistemleri (karşılaştırma tablosu için) */
+  /** Uygun yetiştirme sistemleri */
   sistem: string;
-  accent: Accent;
   gorseller: Gorsel[];
+  accent: Accent;
+  /** Kullanıcı kararı: fiyatlar sık değiştiği için sitede fiyat yok (EKSIKLER.md #3) */
+  fiyat?: { tutar: number; birim: string };
+  seo: { title: string; description: string };
   whatsappMesaji: string;
   ekBolum?: EkBolum;
 };
@@ -67,12 +69,18 @@ export const tavuklar: Tur[] = [
     aramaVaryanti: "Lohman Brown",
     tip: "Hibrit",
     kullanim: "Yumurtacı",
-    yumurtaRengi: "Kahverengi",
-    ozet: "Ticari yumurtacılıkta en yaygın hibritlerden biri; erken yumurtlar, kahverengi ve sağlam kabuklu yumurta verir.",
-    aciklama: [
-      "Lohmann Brown, yumurta üretimi için geliştirilmiş kahverengi yumurtacı bir hibrittir. Türkiye'de çoğu zaman \"Lohman Brown\" diye de aranır. Düzenli üretimi ve kabuk kalitesiyle hem köy kümesinde hem de ticari işletmelerde tercih edilir.",
-      "Sakin karakteri sayesinde sürü yönetimi kolaydır. Uygun barınak, bakım ve beslemeyle yüksek verim potansiyeline sahiptir.",
+    kisaAciklama: "Ticari yumurtacılıkta en yaygın hibritlerden biri; erken yumurtlar, kahverengi ve kaliteli kabuklu yumurta verir.",
+    uzunAciklama: [
+      "Lohmann Brown, yumurta üretimi için geliştirilmiş kahverengi yumurtacı bir hibrittir. Türkiye'de çoğu zaman \"Lohman Brown\" diye de aranır. Düzenli üretimi ve kabuk kalitesiyle özellikle yumurta üreten işletmelerin sık tercih ettiği türlerdendir.",
+      "Sakin karakteri kümes yönetimini kolaylaştırır. Uygun barınak, bakım ve beslemeyle yüksek üretim potansiyeline sahiptir.",
     ],
+    yumurtaRengi: "Kahverengi",
+    yillikVerim: "72. haftaya kadar tavuk başına 321 yumurta",
+    ilkYumurtaHaftasi: "20–21. hafta (140–145. günde %50 verim)",
+    veriKaynagi: {
+      ad: "Lohmann Breeders, Lohmann Brown-Classic (alternatif barınak) üretici verisi",
+      url: "https://lohmann-breeders.com/strains/lohmann-brown-classic-alternative-housing/",
+    },
     ozellikler: [
       { baslik: "Yüksek yumurta verimi", metin: "Yumurta üretimi için geliştirilmiş, ticari yumurtacılıkta yaygın kullanılan bir hibrittir." },
       { baslik: "Kahverengi yumurta", metin: "Kendine özgü kahverengi kabuklu yumurtalarıyla bilinir." },
@@ -80,56 +88,55 @@ export const tavuklar: Tur[] = [
       { baslik: "Yumurta kalitesi", metin: "Kabuk kalitesi ve düzenli üretimiyle tercih edilir." },
       { baslik: "Yemden verimli yararlanma", metin: "Yediği yemi yumurtaya iyi dönüştürür." },
       { baslik: "Sakin ve yönetimi kolay", metin: "Sakin karakteri kümes yönetimini kolaylaştırır." },
-      { baslik: "Ticari üretime uygun", metin: "Yumurta üretimi yapan işletmelerin sık tercih ettiği türlerdendir." },
+      { baslik: "Güçlü üretim performansı", metin: "Uygun barınma, bakım ve beslemeyle yüksek üretim potansiyeline sahiptir." },
     ],
     kart: ["Yüksek yumurta verimi", "Kahverengi yumurta", "Erken yumurtlama", "İyi yem değerlendirme", "Sakin karakter", "Ticari üretime uygun"],
-    veri: {
-      ilkYumurta: "140–145. gün (%50 verim)",
-      verim: "72. haftaya kadar tavuk başına 321 yumurta",
-      yumurtaAgirligi: "Ortalama 63,3 g (72. haftaya kadar)",
-      kaynak: {
-        ad: "Lohmann Breeders, Lohmann Brown-Classic (alternatif barınak sistemleri) üretici verisi",
-        url: "https://lohmann-breeders.com/strains/lohmann-brown-classic-alternative-housing/",
-      },
-    },
     sistem: "Kümes, ticari işletme",
     accent: "orange",
     gorseller: [
-      img("lohmann-brown", 1, "Toprak zeminde yem arayan kahverengi Lohmann Brown tavuğu"),
       img("lohmann-brown", 2, "Yakın plan kızıl kahverengi tüylü Lohmann Brown yarkası"),
+      img("lohmann-brown", 1, "Toprak zeminde duran kahverengi Lohmann Brown tavuğu"),
       img("lohmann-brown", 3, "Otların arasında eşelenen Lohmann Brown tavuğunun yakın çekimi"),
       img("lohmann-brown", 4, "Kümes önünde bir arada dolaşan kahverengi yumurtacı tavuklar"),
     ],
+    seo: {
+      title: "Lohmann Brown Yarka – Kahverengi Yumurtacı",
+      description: "Lohmann Brown yarka: erken yumurtlayan, kahverengi yumurta veren sakin hibrit. Konya'dan Türkiye'nin her yerine teslimat. Bilgi için arayın.",
+    },
     whatsappMesaji: "Merhaba, Lohmann Brown yarka hakkında bilgi almak istiyorum.",
   },
   {
     slug: "atak-s",
     ad: "Atak-S",
-    tip: "Yerli hibrit",
+    tip: "Yerli ırk",
     kullanim: "Yumurtacı",
-    yumurtaRengi: "Kahverengi",
-    ozet: "Türkiye'de geliştirilmiş yerli yumurtacı; iklimimize uyumlu, hareketli ve gezen tavuk sistemine uygun.",
-    aciklama: [
-      "Atak-S, Türkiye'de geliştirilmiş ve yetiştiricilikte yaygın kullanılan yerli bir yumurtacı genotiptir. Kahverengi kabuklu yumurta verir.",
-      "Türkiye'nin farklı bölgelerindeki koşullara uyum sağlamasıyla bilinir. Aktif ve hareketli yapısı onu açık alan ve gezen tavuk yetiştiriciliği için iyi bir seçenek yapar.",
+    kisaAciklama: "Türkiye'de geliştirilmiş yerli yumurtacı; iklimimize uyumlu, hareketli ve gezen tavuk sistemine uygun.",
+    uzunAciklama: [
+      "Atak-S, Türkiye'de geliştirilmiş ve yetiştiricilikte önemli yer tutan yerli bir yumurtacı ırktır. Genellikle kahverengi kabuklu yumurta verir.",
+      "Türkiye'nin farklı bölgelerindeki koşullara uyum sağlamasıyla öne çıkar. Aktif ve hareketli yapısı onu açık alan ve gezen tavuk yetiştiriciliği için iyi bir seçenek yapar. Hem ticari hem hobi amaçlı, farklı ölçeklerde yetiştirilebilir.",
     ],
+    yumurtaRengi: "Kahverengi",
+    iklim: "Türkiye'nin farklı bölgelerindeki koşullara uyumlu",
     ozellikler: [
-      { baslik: "Yerli yumurtacı", metin: "Türkiye'de geliştirilmiş, yetiştiricilikte önemli yer tutan bir genotiptir." },
+      { baslik: "Yerli yumurtacı", metin: "Türkiye'de geliştirilmiş, yetiştiricilikte kullanılan önemli yumurtacılardan biridir." },
       { baslik: "Yüksek yumurta verimi", metin: "Uygun bakım ve beslemeyle yüksek üretim potansiyeline sahiptir." },
       { baslik: "Kahverengi yumurta", metin: "Genellikle kahverengi kabuklu yumurta verir." },
-      { baslik: "Gezen tavuğa uygun", metin: "Açık alan ve serbest dolaşım sistemlerinde rahatlıkla yetiştirilir." },
-      { baslik: "İklimimize uyumlu", metin: "Türkiye'nin farklı bölgelerindeki yetiştirme koşullarına uyum sağlar." },
+      { baslik: "Serbest dolaşıma uygun", metin: "Açık alan ve gezen tavuk sistemlerinde tercih edilir." },
+      { baslik: "İklime uyumlu", metin: "Türkiye'nin farklı bölgelerindeki yetiştirme koşullarına uyum sağlar." },
       { baslik: "İyi yem değerlendirme", metin: "Yemi ekonomik şekilde yumurtaya dönüştürür." },
-      { baslik: "Hareketli yapı", metin: "Aktif karakteri açık alan yetiştiriciliğine uygundur." },
+      { baslik: "Dayanıklı ve hareketli", metin: "Farklı yetiştirme sistemlerine uyum sağlar; aktif yapısı açık alana uygundur." },
     ],
-    kart: ["Yerli yumurtacı", "Yüksek yumurta verimi", "Kahverengi yumurta", "Gezen tavuğa uygun", "Türkiye iklimine uyumlu", "Dayanıklı yapı"],
-    veri: {},
+    kart: ["Yerli yumurtacı ırk", "Yüksek yumurta verimi", "Kahverengi yumurta", "Gezen tavuğa uygun", "Türkiye iklimine uyumlu", "Dayanıklı yapı"],
     sistem: "Kümes, gezen tavuk, açık alan",
     accent: "pasture",
     gorseller: [
       img("atak-s", 1, "Çimenlik alanda duran koyu tüylü Atak-S yarkası"),
       img("atak-s", 2, "Bahçede serbest dolaşan Atak-S tavuğu"),
     ],
+    seo: {
+      title: "Atak-S Yarka – Yerli Yumurtacı Irk",
+      description: "Atak-S yarka: Türkiye'de geliştirilmiş, iklimimize uyumlu, gezen tavuğa uygun yerli yumurtacı. Türkiye geneli kapıya teslim. Bilgi için arayın.",
+    },
     whatsappMesaji: "Merhaba, Atak-S yarka hakkında bilgi almak istiyorum.",
   },
   {
@@ -137,12 +144,13 @@ export const tavuklar: Tur[] = [
     ad: "Black Nick",
     tip: "Hibrit",
     kullanim: "Yumurtacı",
-    yumurtaRengi: "Kahverengi",
-    ozet: "Koyu tüylü, sakin ve verimli bir yumurtacı hibrit; kümeste de açık alanda da iyi sonuç verir.",
-    aciklama: [
-      "Black Nick, koyu renkli tüyleriyle diğer yumurtacılardan kolayca ayırt edilen verimli bir hibrittir. Kahverengi kabuklu yumurta verir ve erken dönemde üretime başlar.",
-      "Sakin ve uyumlu karakteri sürü yönetimini kolaylaştırır. Kafessiz kümes, klasik kümes ve açık alan sistemlerinde yetiştirilebilir.",
+    kisaAciklama: "Koyu tüylü, sakin ve verimli bir yumurtacı hibrit; kümeste de açık alanda da yetiştirilebilir.",
+    uzunAciklama: [
+      "Black Nick, koyu renkli tüyleriyle diğer yumurtacılardan kolayca ayırt edilen verimli bir hibrittir. Genellikle kahverengi kabuklu yumurta verir ve erken dönemde üretime başlar.",
+      "Sakin ve uyumlu karakteri sürü yönetimini kolaylaştırır. Uygun bakımla kafessiz kümes, klasik kümes ve açık alan sistemlerinde yetiştirilebilir.",
     ],
+    yumurtaRengi: "Kahverengi",
+    iklim: "Uygun barınakla farklı çevre koşullarına uyum sağlar",
     ozellikler: [
       { baslik: "Yüksek yumurta verimi", metin: "Yumurta üretimi için tercih edilen verimli bir hibrittir." },
       { baslik: "Kahverengi yumurta", metin: "Genellikle kahverengi kabuklu yumurta verir." },
@@ -152,9 +160,8 @@ export const tavuklar: Tur[] = [
       { baslik: "Farklı sistemlere uygun", metin: "Kafessiz, kümes ve açık alan sistemlerinde yetiştirilebilir." },
       { baslik: "Dikkat çekici görünüm", metin: "Koyu renkli tüyleriyle kolayca tanınır." },
     ],
-    kart: ["Yüksek yumurta verimi", "Kahverengi yumurta", "Erken yumurtlama", "Sakin ve uyumlu", "Açık alana uygun", "Ticari üretime uygun"],
-    veri: {},
-    sistem: "Kafessiz kümes, açık alan",
+    kart: ["Yüksek yumurta verimi", "Kahverengi yumurta", "Erken yumurtlama", "İyi yem değerlendirme", "Sakin ve uyumlu", "Açık alana uygun"],
+    sistem: "Kafessiz kümes, kümes, açık alan",
     accent: "yolk",
     gorseller: [
       img("black-nick", 1, "Kuru otların arasında duran siyah tüylü Black Nick yarkası"),
@@ -163,19 +170,24 @@ export const tavuklar: Tur[] = [
       img("black-nick", 4, "Çimlerde eşelenen parlak siyah tüylü Black Nick tavuğu"),
       img("black-nick", 5, "Dal üzerinde yürüyen siyah yumurtacı tavuk"),
     ],
+    seo: {
+      title: "Black Nick Yarka – Siyah Tüylü Yumurtacı",
+      description: "Black Nick yarka: koyu tüylü, sakin, erken yumurtlayan kahverengi yumurtacı hibrit. Konya'dan tüm il ve ilçelere teslimat. Bilgi için arayın.",
+    },
     whatsappMesaji: "Merhaba, Black Nick yarka hakkında bilgi almak istiyorum.",
   },
   {
     slug: "ligorin",
     ad: "Ligorin",
-    tip: "Saf ırk",
+    tip: "Irk",
     kullanim: "Yumurtacı",
-    yumurtaRengi: "Beyaz",
-    ozet: "Beyaz yumurtanın klasik ırkı; erken yumurtlar, hareketli ve yemi ekonomik kullanır.",
-    aciklama: [
+    kisaAciklama: "Beyaz yumurtanın bilinen ırkı; erken yumurtlar, hareketli ve yemi ekonomik kullanır.",
+    uzunAciklama: [
       "Ligorin, yumurtacı ırklar arasında verimiyle öne çıkan ve dünya genelinde yaygın yetiştirilen bir ırktır. Genellikle beyaz kabuklu yumurta verir.",
-      "Canlı ve hareketli bir karakteri vardır. Uygun barınak ve bakımla farklı iklimlerde yetiştirilebilir ve yemi ekonomik kullanır.",
+      "Canlı ve hareketli bir karakteri vardır. Uygun barınak ve bakımla farklı iklimlerde yetiştirilebilir; yemi ekonomik kullandığı için ticari üretimde tercih edilir.",
     ],
+    yumurtaRengi: "Beyaz",
+    iklim: "Uygun barınakla farklı iklimlerde yetiştirilebilir",
     ozellikler: [
       { baslik: "Yüksek yumurta verimi", metin: "Yumurtacı ırklar arasında verimliliğiyle öne çıkar." },
       { baslik: "Erken yumurtlama", metin: "Uygun bakım ve beslemeyle erken yaşta üretime başlar." },
@@ -183,15 +195,19 @@ export const tavuklar: Tur[] = [
       { baslik: "Hareketli ve aktif", metin: "Canlı karakteriyle dikkat çeker." },
       { baslik: "Farklı iklimlere uyum", metin: "Uygun barınakla çeşitli iklimlerde yetiştirilebilir." },
       { baslik: "Beyaz yumurta", metin: "Genellikle beyaz kabuklu yumurta verir." },
+      { baslik: "Ticari yumurtacılığa uygun", metin: "Dünya genelinde yumurta üretimi için yaygın olarak yetiştirilir." },
     ],
-    kart: ["Yüksek yumurta verimi", "Erken yumurtlama", "Beyaz yumurta", "Yemden iyi yararlanma", "Hareketli yapı", "Ticari üretime uygun"],
-    veri: {},
+    kart: ["Yüksek yumurta verimi", "Erken yumurtlama", "Yemden iyi yararlanma", "Beyaz yumurta", "Hareketli yapı", "Ticari üretime uygun"],
     sistem: "Kümes, ticari işletme",
     accent: "sky",
     gorseller: [
-      img("ligorin", 1, "Kümes avlusunda dolaşan beyaz Ligorin tavukları"),
       img("ligorin", 2, "Çimenlikte gezen beyaz tüylü Ligorin yarkaları"),
+      img("ligorin", 1, "Kümes avlusunda dolaşan beyaz Ligorin tavukları"),
     ],
+    seo: {
+      title: "Ligorin Yarka – Beyaz Yumurtacı Irk",
+      description: "Ligorin yarka: beyaz yumurta veren, erken yumurtlayan, yemi ekonomik kullanan yumurtacı ırk. Türkiye geneli kapıya teslimat. Bilgi için arayın.",
+    },
     whatsappMesaji: "Merhaba, Ligorin yarka hakkında bilgi almak istiyorum.",
   },
   {
@@ -199,22 +215,23 @@ export const tavuklar: Tur[] = [
     ad: "Tinted Coral",
     tip: "Hibrit",
     kullanim: "Yumurtacı",
-    yumurtaRengi: "Krem / kırık beyaz",
-    ozet: "Krem renkli yumurta veren, sakin ve dayanıklı bir hibrit; salma yetiştiriciliğe uygun.",
-    aciklama: [
+    kisaAciklama: "Krem renkli yumurta veren, sakin ve dayanıklı bir hibrit; salma yetiştiriciliğe uygun.",
+    uzunAciklama: [
       "Tinted Coral, açık krem ve kırık beyaz tonlarında yumurta veren verimli bir hibrittir. Uygun bakım ve beslemeyle yaklaşık 17–20. haftalarda yumurtlamaya başlar.",
-      "Dengeli yem tüketimi, sakin karakteri ve farklı koşullara uyumuyla bilinir. Salma (gezen tavuk) sistemleri için de iyi bir seçenektir.",
+      "Dengeli ve düşük yem tüketimi, sakin karakteri ve farklı koşullara uyumuyla bilinir. Salma (gezen tavuk) sistemleri için de iyi bir seçenektir.",
     ],
+    yumurtaRengi: "Krem / kırık beyaz",
+    ilkYumurtaHaftasi: "Yaklaşık 17–20. hafta",
     ozellikler: [
       { baslik: "Yüksek yumurta verimi", metin: "Yumurta üretimi için geliştirilmiş verimli bir hibrittir." },
       { baslik: "Krem renkli yumurta", metin: "Açık krem ve kırık beyaz tonlarında yumurta verir." },
       { baslik: "Ekonomik yem tüketimi", metin: "Dengeli ve düşük yem tüketimiyle bilinir." },
       { baslik: "Erken yumurtlama", metin: "Yaklaşık 17–20. haftalarda yumurtlamaya başlar." },
-      { baslik: "Sakin ve uysal", metin: "Sürü yönetimini kolaylaştırır." },
+      { baslik: "Sakin ve uysal", metin: "Sakin karakteri sürü yönetimini kolaylaştırır." },
+      { baslik: "Uyumlu ve dayanıklı", metin: "Farklı yetiştirme koşullarına uyum sağlar." },
       { baslik: "Salma yetiştiriciliğe uygun", metin: "Gezen tavuk sistemlerinde rahatlıkla yetiştirilir." },
     ],
     kart: ["Yüksek yumurta verimi", "Krem renkli yumurta", "Ekonomik yem tüketimi", "Erken yumurtlama", "Sakin ve uysal", "Salma yetiştiriciliğe uygun"],
-    veri: { ilkYumurta: "Yaklaşık 17–20. hafta" },
     sistem: "Kümes, salma / gezen tavuk",
     accent: "straw",
     gorseller: [
@@ -222,6 +239,10 @@ export const tavuklar: Tur[] = [
       img("tinted-coral", 2, "Kümeste bir arada duran açık tüylü Tinted Coral tavukları"),
       img("tinted-coral", 3, "Yeşil çimenlikte yem arayan beyaz tüylü tavuklar"),
     ],
+    seo: {
+      title: "Tinted Coral Yarka – Krem Yumurtalı Hibrit",
+      description: "Tinted Coral yarka: krem renkli yumurta, 17–20. haftada yumurtlama, sakin ve salma yetiştiriciliğe uygun. Türkiye geneli teslimat. Bilgi alın.",
+    },
     whatsappMesaji: "Merhaba, Tinted Coral yarka hakkında bilgi almak istiyorum.",
   },
   {
@@ -230,41 +251,46 @@ export const tavuklar: Tur[] = [
     aramaVaryanti: "Lohman Sandy",
     tip: "Hibrit",
     kullanim: "Yumurtacı",
-    yumurtaRengi: "Krem / bej",
-    ozet: "Açık renkli yumurtasıyla bilinen, sakin ve uzun süre istikrarlı üreten bir hibrit.",
-    aciklama: [
+    kisaAciklama: "Açık renkli yumurtasıyla bilinen, sakin ve üretim dönemi boyunca istikrarlı bir hibrit.",
+    uzunAciklama: [
       "Lohmann Sandy, krem ve bej tonlarındaki açık renkli yumurtalarıyla öne çıkan verimli bir hibrittir. \"Lohman Sandy\" olarak da aranır.",
-      "Sakin ve yönetimi kolay bir yapısı vardır. Uygun bakım ve beslemeyle üretim döneminde istikrarlı performans gösterir.",
+      "Sakin ve yönetimi kolay bir yapısı vardır. Uygun kümes koşullarında farklı yetiştirme sistemlerine uyum sağlar ve üretim döneminde istikrarlı performans gösterir.",
     ],
+    yumurtaRengi: "Krem / bej",
     ozellikler: [
       { baslik: "Yüksek yumurta verimi", metin: "Yumurta üretimi için geliştirilmiş verimli bir hibrittir." },
       { baslik: "Açık renkli yumurta", metin: "Krem ve bej tonlarında yumurta verir." },
       { baslik: "Erken yumurtlama", metin: "Uygun koşullarda erken dönemde üretime başlar." },
       { baslik: "İyi yem değerlendirme", metin: "Yemden verimli yararlanır." },
       { baslik: "Dayanıklı ve uyumlu", metin: "Farklı kümes sistemlerine uyum sağlar." },
-      { baslik: "Uzun üretim dönemi", metin: "Üretim boyunca istikrarlı performans gösterir." },
+      { baslik: "Sakin karakter", metin: "Yönetimi kolay bir hibrittir." },
+      { baslik: "Uzun üretim dönemi", metin: "Uygun bakım ve beslemeyle istikrarlı performans gösterir." },
     ],
     kart: ["Yüksek yumurta verimi", "Açık renkli yumurta", "Erken yumurtlama", "İyi yem değerlendirme", "Sakin ve uyumlu", "Ticari üretime uygun"],
-    veri: {},
     sistem: "Kümes, ticari işletme",
     accent: "yolk",
     gorseller: [
       img("lohmann-sandy", 1, "Kümes avlusunda yürüyen beyaz tüylü Lohmann Sandy yarkası"),
       img("lohmann-sandy", 2, "Çimenlikte duran açık renkli yumurtacı tavuk"),
     ],
+    seo: {
+      title: "Lohmann Sandy Yarka – Açık Renkli Yumurta",
+      description: "Lohmann Sandy yarka: krem-bej yumurta veren, sakin, üretimi istikrarlı yumurtacı hibrit. Konya'dan Türkiye geneline teslimat. Bilgi için arayın.",
+    },
     whatsappMesaji: "Merhaba, Lohmann Sandy yarka hakkında bilgi almak istiyorum.",
   },
   {
     slug: "sussex",
     ad: "Sussex",
-    tip: "Saf ırk",
+    tip: "Irk",
     kullanim: "Yumurta ve et",
-    yumurtaRengi: "Krem – açık kahverengi",
-    ozet: "Hem yumurta hem et için yetiştirilen, iri yapılı, sakin ve gösterişli bir ırk.",
-    aciklama: [
-      "Sussex, hem yumurta hem et için yetiştirilen çift amaçlı bir ırktır. Kremden açık kahverengiye uzanan tonlarda yumurta verir.",
-      "Dolgun ve güçlü yapısı, uysal karakteri ve iyi yem arama yeteneğiyle açık alana çok uygundur. Light Sussex çeşidi beyaz tüyleri ile boyun ve kuyruktaki siyah tüyleriyle hemen tanınır.",
+    kisaAciklama: "Hem yumurta hem et için yetiştirilen, iri yapılı, sakin ve gösterişli bir ırk.",
+    uzunAciklama: [
+      "Sussex, hem yumurta hem et için tercih edilen çift amaçlı bir ırktır. Kremden açık kahverengiye uzanan tonlarda yumurta verir.",
+      "Dolgun ve güçlü yapısı, uysal karakteri ve iyi yem arama yeteneğiyle açık alana uygundur. Light Sussex çeşidi beyaz tüyleri ile boyun ve kuyruktaki siyah tüyleriyle hemen tanınır. Hobi ve ticari yetiştiricilikte değerlendirilebilir.",
     ],
+    yumurtaRengi: "Krem – açık kahverengi",
+    iklim: "Uygun barınakla farklı iklimlerde yetiştirilebilir",
     ozellikler: [
       { baslik: "Çift amaçlı", metin: "Hem yumurta hem et üretimi için tercih edilir." },
       { baslik: "İri ve güçlü yapı", metin: "Dolgun vücut yapısına sahiptir." },
@@ -272,30 +298,34 @@ export const tavuklar: Tur[] = [
       { baslik: "Açık kahverengi yumurta", metin: "Kremden açık kahverengiye uzanan tonlarda yumurta verir." },
       { baslik: "Sakin karakter", metin: "Uysal ve yönetimi kolaydır." },
       { baslik: "İyi yem arar", metin: "Açık alan yetiştiriciliğine uyum sağlayan aktif bir ırktır." },
-      { baslik: "Gösterişli görünüm", metin: "Light Sussex beyaz tüy ve siyah boyun-kuyruk deseniyle dikkat çeker." },
+      { baslik: "Gösterişli görünüm", metin: "Light Sussex, beyaz tüy ve siyah boyun-kuyruk deseniyle dikkat çeker." },
     ],
     kart: ["Yumurta ve et için", "İri ve güçlü yapı", "İyi yumurta verimi", "Açık kahverengi yumurta", "Sakin karakter", "Açık alana uygun"],
-    veri: {},
     sistem: "Bahçe, açık alan, hobi",
     accent: "pasture",
     gorseller: [
       img("sussex", 1, "Çimenlerin arasında duran beyaz tüylü, siyah boyunlu Light Sussex tavuğu"),
       img("sussex", 2, "Yeşil çayırda yem arayan Light Sussex tavuğu"),
     ],
+    seo: {
+      title: "Sussex Yarka – Yumurta ve Et İçin",
+      description: "Sussex yarka: iri yapılı, sakin, açık kahverengi yumurta veren çift amaçlı ırk. Açık alana uygun. Türkiye geneli kapıya teslimat. Bilgi alın.",
+    },
     whatsappMesaji: "Merhaba, Sussex yarka hakkında bilgi almak istiyorum.",
   },
   {
     slug: "pleymut",
     ad: "Pleymut (Plymouth Rock)",
     aramaVaryanti: "Plymouth Rock",
-    tip: "Saf ırk",
+    tip: "Irk",
     kullanim: "Yumurta ve et",
-    yumurtaRengi: "Kahverengi",
-    ozet: "Siyah-beyaz çizgili tüyleriyle tanınan, soğuğa dayanıklı, iri ve sakin çift amaçlı ırk.",
-    aciklama: [
+    kisaAciklama: "Siyah-beyaz çizgili tüyleriyle tanınan, soğuğa dayanıklı, iri ve sakin çift amaçlı ırk.",
+    uzunAciklama: [
       "Pleymut, dünyada Plymouth Rock adıyla bilinen, uzun yıllardır yetiştirilen köklü bir ırktır. Hem yumurta hem et için yetiştirilir ve genellikle büyük boy, kahverengi kabuklu yumurta verir.",
-      "Siyah-beyaz çizgili tüyleriyle kümesin en gösterişli tavuklarındandır. Uysal karakteri ve özellikle soğuğa dayanıklılığıyla bahçe ve köy kümesleri için çok uygundur.",
+      "Siyah-beyaz çizgili tüyleriyle çok gösterişlidir. Uysal karakteri ve özellikle soğuk havaya dayanıklılığıyla bahçe ve kümes yetiştiriciliği için uygundur.",
     ],
+    yumurtaRengi: "Kahverengi",
+    iklim: "Soğuk havaya dayanıklı",
     ozellikler: [
       { baslik: "Çift amaçlı", metin: "Hem yumurta hem et üretimi için uygundur." },
       { baslik: "İri ve güçlü yapı", metin: "Dolgun vücut yapısıyla dikkat çeker." },
@@ -305,20 +335,23 @@ export const tavuklar: Tur[] = [
       { baslik: "Sakin karakter", metin: "Uysal ve yönetimi kolaydır." },
       { baslik: "Gösterişli görünüm", metin: "Siyah-beyaz çizgili tüyleri çok dikkat çekicidir." },
     ],
-    kart: ["Yumurta ve et için", "İri ve güçlü yapı", "Kahverengi yumurta", "Soğuğa dayanıklı", "Sakin karakter", "Bahçe kümesine uygun"],
-    veri: {},
-    sistem: "Bahçe, köy kümesi, açık alan",
+    kart: ["İri ve güçlü yapı", "Yumurta ve et için", "Kahverengi yumurta", "Sakin karakter", "Dayanıklı yapı", "Kümes ve bahçeye uygun"],
+    sistem: "Bahçe, kümes, açık alan",
     accent: "sky",
     gorseller: [
       img("pleymut", 2, "Saman üzerinde duran iki siyah-beyaz çizgili Pleymut tavuğu"),
       img("pleymut", 1, "Kuru yapraklar arasında yürüyen çizgili tüylü Pleymut (Plymouth Rock) tavuğu"),
     ],
+    seo: {
+      title: "Pleymut (Plymouth Rock) Yarka ve Horoz",
+      description: "Pleymut yarka ve horoz: çizgili tüylü, soğuğa dayanıklı, iri yapılı çift amaçlı ırk. Kahverengi yumurta. Türkiye geneli teslimat. Bilgi alın.",
+    },
     whatsappMesaji: "Merhaba, Pleymut yarka hakkında bilgi almak istiyorum.",
     ekBolum: {
       baslik: "Pleymut Horoz",
       metin:
         "Pleymut horozu iri ve güçlü yapısı, hızlı gelişimi ve siyah-beyaz çizgili tüyleriyle öne çıkar. Etlik yetiştiricilikte tercih edilir, sakin karakterlidir; kümes ve açık alan sistemlerinde sürüyle birlikte yetiştirilebilir.",
-      ozellikler: ["İri ve güçlü yapı", "Etlik yetiştiriciliğe uygun", "Hızlı gelişim", "Dayanıklı ve uyumlu", "Sakin karakter", "Sürü yetiştiriciliğine uygun"],
+      ozellikler: ["İri ve güçlü yapı", "Etlik yetiştiriciliğe uygun", "Dayanıklı ve uyumlu", "Sakin karakter", "Gösterişli görünüm", "Sürü yetiştiriciliğine uygun"],
       gorseller: [
         img("pleymut-horoz", 1, "Siyah tavukların arasında duran çizgili Pleymut horozu"),
         img("pleymut-horoz", 2, "Dalların önünde duran kırmızı ibikli çizgili Pleymut horozu"),
@@ -326,6 +359,8 @@ export const tavuklar: Tur[] = [
     },
   },
 ];
+
+export const turSluglari = tavuklar.map((t) => t.slug);
 
 export function turBul(slug: string): Tur | undefined {
   return tavuklar.find((t) => t.slug === slug);
