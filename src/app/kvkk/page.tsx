@@ -6,7 +6,7 @@ import { YasalMetin } from "@/components/YasalMetin";
 import { site } from "@/content/site";
 import { sayfaMeta } from "@/lib/metadata";
 
-// TODO(kullanıcı): Veri sorumlusunun resmi unvanı teyit edilmeli (şu an "Aziz Çağlar – Üçel 23 Tavukçuluk").
+// Veri sorumlusu kullanıcı tarafından "Aziz Çağlar – Üçel 23 Yarka" olarak onaylandı (2026-09-29).
 // TODO(hukuk): Metin genel bir şablondur; yayından önce bir hukukçuya kontrol ettirilmesi önerilir.
 // Vergi / kimlik numarası bilerek yayınlanmıyor (kişisel veri).
 

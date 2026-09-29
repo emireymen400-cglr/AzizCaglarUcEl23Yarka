@@ -312,6 +312,14 @@ async function logo() {
     .toFile(path.join(PUB, "og-logo.png"));
 }
 
+/** Kullanıcının verdiği Sahibinden logosu (sarı kare) → küçük ikon */
+async function sosyalIkonlar() {
+  const hedef = path.join(PUB, "images", "sosyal", "sahibinden.webp");
+  fs.mkdirSync(path.dirname(hedef), { recursive: true });
+  if (YENIDEN || !fs.existsSync(hedef))
+    await sharp(path.join(KAYNAK, "sosyal medya logo ve linkleri", "sahibinden.png")).resize(96, 96).webp({ quality: 90 }).toFile(hedef);
+}
+
 type VideoSonuc = { ad: string; not: string; kaynakMb: number; mb: number; sureSn: number; boyut: string; ses: boolean };
 
 async function videoIsle(v: VideoTanim): Promise<VideoSonuc> {
@@ -376,6 +384,7 @@ async function main() {
   await digerGorseller();
   console.log("Logo ve ikonlar...");
   await logo();
+  await sosyalIkonlar();
 
   console.log("Videolar...");
   const videoSonuclari: VideoSonuc[] = [];

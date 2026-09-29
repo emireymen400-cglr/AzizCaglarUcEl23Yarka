@@ -1,7 +1,9 @@
 // Fontları yalnızca Latin + Türkçe karakterlere kırpar ve kullanılan ağırlıklara sabitler.
 // Google'ın latin-ext alt kümesi sayfa başına ~230 KB font indiriyordu (mobil LCP'yi geciktiriyordu).
 // Kullanım: pnpm fontlar   → src/fonts/*.woff2
-// Kaynaklar (OFL lisanslı): assets/fonts/ ve assets/fonts/kaynak/
+// Kaynaklar (OFL lisanslı, ücretsiz): Bebas → assets/fonts/ (OG görselleri için repoda);
+// Inter/Jost/Caveat değişken TTF → _kaynaklar/fontlar/ (git dışı, ~1,4 MB). Yeniden indirmek için:
+//   https://github.com/google/fonts/tree/main/ofl/{inter,jost,caveat}
 
 import fs from "node:fs";
 import path from "node:path";
@@ -28,9 +30,9 @@ const karakterler = araliklar.flatMap(([a, b]) => Array.from({ length: b - a + 1
 const fontlar: { kaynak: string; cikti: string; eksenler?: Record<string, number | { min: number; max: number }> }[] = [
   { kaynak: "assets/fonts/BebasNeue-Regular.ttf", cikti: "bebas-neue-400.woff2" },
   // Inter: gövde metni 400–600, optik boyut metin için sabit
-  { kaynak: "assets/fonts/kaynak/Inter[opsz,wght].ttf", cikti: "inter-400-600.woff2", eksenler: { opsz: 14, wght: { min: 400, max: 600 } } },
-  { kaynak: "assets/fonts/kaynak/Jost[wght].ttf", cikti: "jost-500.woff2", eksenler: { wght: 500 } },
-  { kaynak: "assets/fonts/kaynak/Caveat[wght].ttf", cikti: "caveat-500.woff2", eksenler: { wght: 500 } },
+  { kaynak: "_kaynaklar/fontlar/Inter[opsz,wght].ttf", cikti: "inter-400-600.woff2", eksenler: { opsz: 14, wght: { min: 400, max: 600 } } },
+  { kaynak: "_kaynaklar/fontlar/Jost[wght].ttf", cikti: "jost-500.woff2", eksenler: { wght: 500 } },
+  { kaynak: "_kaynaklar/fontlar/Caveat[wght].ttf", cikti: "caveat-500.woff2", eksenler: { wght: 500 } },
 ];
 
 fs.mkdirSync(CIKTI, { recursive: true });

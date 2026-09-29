@@ -4,6 +4,7 @@ import { BreedCard } from "@/components/BreedCard";
 import { CtaBolumu } from "@/components/CtaBolumu";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { GuvenSatiri } from "@/components/GuvenSatiri";
+import { SosyalBolum } from "@/components/SosyalBolum";
 import { HeroVideo } from "@/components/HeroVideo";
 import { BugdayBasagi, YuvadaYumurtalar } from "@/components/illustrations";
 import { IletisimAraclari } from "@/components/layout/IletisimAraclari";
@@ -208,6 +209,8 @@ export default function AnaSayfa() {
           <FaqAccordion sorular={oneCikanSorular.slice(0, 5)} />
         </div>
       </Section>
+
+      <SosyalBolum />
 
       <CtaBolumu />
       <IletisimAraclari mesaj={mesajlar.genel} />

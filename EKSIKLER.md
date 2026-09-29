@@ -4,17 +4,23 @@ Son güncelleme: 2026-09-29 (yayın öncesi denetim sonrası).
 
 ## Açık kalanlar (sonra sorulacak / hatırlatılacak)
 
-- [ ] **Hakkımızda içeriği** (kuruluş yılı, deneyim, Aziz Çağlar fotoğrafı) — kullanıcı sonra verecek. HATIRLAT.
-- [ ] **Search Console** — `ucel23yarka.com` alındıktan sonra kurulacak. HATIRLAT. Domain alınınca: Vercel'de eski domainden 301, Search Console "Adres değişikliği".
-- [ ] **KVKK veri sorumlusu unvanı:** Vergi bilgisi geldi (aşağıda). Metinde "Aziz Çağlar – Üçel 23 Tavukçuluk" yazılacak. Resmi unvan farklıysa kullanıcı düzeltmeli.
+- [ ] **Eski alan adı yönlendirmesi + Search Console "Adres değişikliği":** Kullanıcı `ucel23yarka.com`'u aldı, Search Console ve GA4'ü kurdu (2026-09-29). Eski domain (xn--el23tavukuluk-hgbj93a.com) yeni siteye bağlanıp kalıcı yönlendirilecek; talimat verildi.
+- [ ] **Barındırma kararı:** Vercel Hobby ticari kullanıma kapalı (Fair Use Guidelines). Seçenekler: Vercel Pro (20 $/ay) veya ücretsiz ve ticari kullanıma açık Cloudflare Pages (statik dışa aktarım). Kullanıcıya soruldu.
 - [ ] **TikTok / YouTube** — hesaplar açılınca eklenecek (şu an sitede GÖSTERİLMEYECEK).
 - [ ] **EN SON YAPILACAK — YouTube:** Kullanıcı YouTube kanalı açacak. Açılınca `ciftlik-kahverengi-yumurtacilar-01` (100 sn) ve `-03` (85 sn) YouTube'a taşınacak, `lite-youtube` ile gömülecek, VideoObject'e YouTube URL'si eklenecek; kanal linki `site.ts` sosyal hesaplara eklenecek. Şimdilik CRF 32 ile 8,9 / 7,6 MB olarak sitede.
 - [ ] **Vercel kotası:** Uygulandı: videolar tıklayınca yüklenir (hero hariç, o da sayfa yüklendikten sonra), galeri hazır küçük görseller (360/640px) kullanır, next/image yalnızca ~40 görsel için. Yayından sonra Vercel → Usage sayfası kontrol edilecek.
-- [ ] **Facebook linki:** Verilen `facebook.com/share/r/1DPdBjTeEA/` bir sayfaya değil tek bir gönderiye (story.php) gidiyor ve giriş istiyor (denetim 2026-09-29). İşletme sayfasının kalıcı adresi (facebook.com/<sayfa-adı> veya profile.php?id=…) gelirse `site.ts`'de değiştirilecek; JSON-LD sameAs da bunu kullanıyor.
-- [ ] **Sahibinden mağaza linki:** Otomatik istekte 403 + giriş sayfasına yönlendirme (bot koruması olabilir). Kullanıcı tarayıcıda oturum açmadan açıldığını teyit etmeli.
 - [ ] **Yayından sonra PageSpeed Insights:** Yerel Lighthouse (HTTP/1.1, gzip) mobil Performance: ana sayfa 88, tür 92–93, galeri 85–86. Vercel'de (HTTP/2, Brotli, CDN) pagespeed.web.dev ile tekrar ölçülecek; 90 altı kalırsa hero posteri ve galeri ilk satırı yeniden ele alınacak.
 - [ ] **GA4 panel ayarı:** Admin → Özel tanımlar: `sayfa_yolu` ve `tur` etkinlik kapsamlı boyut olarak eklenmeli; Vercel'e `NEXT_PUBLIC_GA_ID` ortam değişkeni girilmeli.
 - [ ] **KVKK ve çerez metni:** Genel şablon; yayından önce hukukçu kontrolü önerilir.
+
+## Üçüncü cevap turu (2026-09-29)
+
+- **Hakkımızda:** 1992'den beri bu faaliyet yürütülüyor. Fotoğraf verilmeyecek. → site.ts `kurulusYili`, Hakkımızda, footer, Organization `foundingDate`.
+- **Facebook:** `facebook.com/share/r/1DPdBjTeEA/` kalıcı link olarak kabul edildi.
+- **Sahibinden:** Tarayıcıda açılıyor; ikon olarak kullanıcının sarı logosu kullanılıyor. 3 sosyal ağ ana sayfanın altında ayrı bölümde.
+- **KVKK veri sorumlusu:** "Aziz Çağlar – Üçel 23 Yarka".
+- **Alan adı:** ucel23yarka.com alındı; Search Console ve GA4 (G-0167JEGVL4) kullanıcı tarafından kuruldu. GitHub ve Vercel kurulumunu kullanıcı yapacak.
+- **Maliyet:** Kullanıcı hiçbir ödeme çıkmamasını istiyor → font kaynakları repodan çıkarıldı (git dışı), barındırma planı soruldu.
 
 ## İkinci cevap turu (2026-09-29)
 

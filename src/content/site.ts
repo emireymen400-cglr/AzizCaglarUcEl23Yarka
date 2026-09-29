@@ -11,12 +11,16 @@ export type Telefon = {
 export type SosyalHesap = {
   ad: "Instagram" | "Facebook" | "Sahibinden";
   url: string;
+  /** Ana sayfadaki takip bölümünde görünen kısa açıklama */
+  aciklama: string;
 };
 
 export const site = {
   ad: "Üçel 23 Yarka",
   tamAd: "Üçel 23 Tavukçuluk",
   sahip: "Aziz Çağlar",
+  /** Kullanıcı: "1992'den beri bu faaliyeti yürütüyoruz" (2026-09-29) */
+  kurulusYili: 1992,
   domain: "https://ucel23yarka.com",
   eskiDomain: "https://www.xn--el23tavukuluk-hgbj93a.com",
   aciklama:
@@ -43,13 +47,14 @@ export const site = {
     schema: "Mo-Su 00:00-23:59",
   },
   sosyal: [
-    { ad: "Instagram", url: "https://www.instagram.com/ucel23yarka/" },
-    { ad: "Facebook", url: "https://www.facebook.com/share/r/1DPdBjTeEA/" },
-    { ad: "Sahibinden", url: "https://ucel23tavukculuk.sahibinden.com/" },
+    { ad: "Instagram", url: "https://www.instagram.com/ucel23yarka/", aciklama: "@ucel23yarka" },
+    // Kullanıcı bu linki kalıcı Facebook adresi olarak onayladı (2026-09-29)
+    { ad: "Facebook", url: "https://www.facebook.com/share/r/1DPdBjTeEA/", aciklama: "Facebook sayfamız" },
+    { ad: "Sahibinden", url: "https://ucel23tavukculuk.sahibinden.com/", aciklama: "Sahibinden mağazamız" },
   ] satisfies SosyalHesap[],
   googleIsletme: "https://share.google/T7QTrXCC1Dnaex3oc",
   /** KVKK veri sorumlusu. Vergi/kimlik numarası bilerek yayınlanmıyor. */
-  veriSorumlusu: "Aziz Çağlar – Üçel 23 Tavukçuluk",
+  veriSorumlusu: "Aziz Çağlar – Üçel 23 Yarka",
   gaId: process.env.NEXT_PUBLIC_GA_ID,
 } as const;
 

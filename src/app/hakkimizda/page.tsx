@@ -10,12 +10,11 @@ import { site } from "@/content/site";
 import { sayfaMeta } from "@/lib/metadata";
 import { mesajlar } from "@/lib/whatsapp";
 
-// TODO(kullanıcı): Kuruluş yılı, deneyim, sürü kapasitesi ve Aziz Çağlar fotoğrafı gelince
-// "Hikâyemiz" bölümü eklenecek (EKSIKLER.md). Şimdilik yalnızca bilinen bilgiler var.
+// Kullanıcı: 1992'den beri bu faaliyet yürütülüyor; Aziz Çağlar fotoğrafı yayınlanmayacak (2026-09-29).
 
 export const metadata = sayfaMeta({
   baslik: "Hakkımızda: Üçel 23 Tavukçuluk",
-  aciklama: "Aziz Çağlar'ın Konya Karatay'daki çiftliğinde yumurtacı yarka yetiştiriyor, Türkiye'nin tüm il ve ilçelerine kendi aracımızla ulaştırıyoruz.",
+  aciklama: "1992'den beri Aziz Çağlar'ın Konya Karatay'daki çiftliğinde yumurtacı yarka yetiştiriyor, Türkiye'nin tüm il ve ilçelerine kendi aracımızla ulaştırıyoruz.",
   yol: "/hakkimizda",
 });
 
@@ -55,9 +54,9 @@ export default function Hakkimizda() {
         cizim={<TavukSiluet />}
         giris={
           <p>
-            {site.ad}, {site.sahip}&apos;ın {site.adres.ilce} / {site.adres.il}&apos;daki çiftliğinde yumurtacı yarka
-            yetiştirip Türkiye&apos;nin tüm il ve ilçelerine ulaştırıyor. Amacımız, kümesinize sağlıklı ve verimli yarkaların
-            güvenle ulaşması.
+            {site.kurulusYili}&apos;den beri {site.sahip}&apos;ın {site.adres.ilce} / {site.adres.il}&apos;daki çiftliğinde
+            yumurtacı yarka yetiştiriyor ve Türkiye&apos;nin tüm il ve ilçelerine ulaştırıyoruz. Amacımız, kümesinize sağlıklı ve
+            verimli yarkaların güvenle ulaşması.
           </p>
         }
       />

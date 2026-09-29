@@ -1,4 +1,3 @@
-import { Store } from "lucide-react";
 import type { SosyalHesap } from "@/content/site";
 import { cn } from "@/lib/cn";
 
@@ -35,5 +34,7 @@ export function FacebookIkon({ className }: P) {
 export function SosyalIkon({ ad, className }: { ad: SosyalHesap["ad"]; className?: string }) {
   if (ad === "Instagram") return <InstagramIkon className={className} />;
   if (ad === "Facebook") return <FacebookIkon className={className} />;
-  return <Store aria-hidden className={className} strokeWidth={1.6} />;
+  // Kullanıcının verdiği Sahibinden logosu (sarı kare, siyah S)
+  // eslint-disable-next-line @next/next/no-img-element -- 1,4 KB hazır ikon
+  return <img src="/images/sosyal/sahibinden.webp" alt="" width={96} height={96} className={cn("rounded-[4px]", className)} />;
 }

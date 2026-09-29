@@ -22,6 +22,7 @@ export function isletmeSchema(): JsonLd {
     logo: tamUrl("/logo.png"),
     image: tamUrl("/og-logo.png"),
     founder: { "@type": "Person", name: site.sahip },
+    foundingDate: String(site.kurulusYili),
     telephone: site.telefonlar.map((t) => t.e164),
     address: {
       "@type": "PostalAddress",

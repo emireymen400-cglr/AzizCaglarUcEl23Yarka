@@ -25,7 +25,8 @@ export function Footer() {
             <div>
               <Image src="/logo.png" alt={site.ad} width={842} height={737} sizes="110px" className="h-24 w-auto" />
               <p className="mt-5 max-w-xs text-white/85">
-                Konya Karatay&apos;daki çiftliğimizden Türkiye&apos;nin tüm il ve ilçelerine yumurtacı yarka.
+                {site.kurulusYili}&apos;den beri Konya Karatay&apos;daki çiftliğimizden Türkiye&apos;nin tüm il ve ilçelerine
+                yumurtacı yarka.
               </p>
             </div>
 
