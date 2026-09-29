@@ -49,7 +49,7 @@ export const site = {
   sosyal: [
     { ad: "Instagram", url: "https://www.instagram.com/ucel23yarka/", aciklama: "@ucel23yarka" },
     // Kullanıcı bu linki kalıcı Facebook adresi olarak onayladı (2026-09-29)
-    { ad: "Facebook", url: "https://www.facebook.com/share/r/1DPdBjTeEA/", aciklama: "Facebook sayfamız" },
+    { ad: "Facebook", url: "https://www.facebook.com/aziz.caglar.1614", aciklama: "Facebook sayfamız" },
     { ad: "Sahibinden", url: "https://ucel23tavukculuk.sahibinden.com/", aciklama: "Sahibinden mağazamız" },
   ] satisfies SosyalHesap[],
   googleIsletme: "https://share.google/T7QTrXCC1Dnaex3oc",

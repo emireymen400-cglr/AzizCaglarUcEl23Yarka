@@ -37,7 +37,7 @@ Sayfa bazlı yönlendirmeler (`/kurumsal` → `/hakkimizda` vb.) sitede hazır (
 ## Üçüncü cevap turu (2026-09-29)
 
 - **Hakkımızda:** 1992'den beri bu faaliyet yürütülüyor. Fotoğraf verilmeyecek. → site.ts `kurulusYili`, Hakkımızda, footer, Organization `foundingDate`.
-- **Facebook:** `facebook.com/share/r/1DPdBjTeEA/` kalıcı link olarak kabul edildi.
+- **Facebook:** `facebook.com/aziz.caglar.1614` (29.09.2026 güncellendi; eski paylaşım linki kaldırıldı).
 - **Sahibinden:** Tarayıcıda açılıyor; ikon olarak kullanıcının sarı logosu kullanılıyor. 3 sosyal ağ ana sayfanın altında ayrı bölümde.
 - **KVKK veri sorumlusu:** "Aziz Çağlar – Üçel 23 Yarka".
 - **Alan adı:** ucel23yarka.com alındı; Search Console ve GA4 (G-0167JEGVL4) kullanıcı tarafından kuruldu. GitHub ve Vercel kurulumunu kullanıcı yapacak.
@@ -47,7 +47,7 @@ Sayfa bazlı yönlendirmeler (`/kurumsal` → `/hakkimizda` vb.) sitede hazır (
 
 - **Alan adı:** `ucel23yarka.com` (kesin).
 - **Konum:** https://www.google.com/maps?q=37.79174,32.6687905&z=17&hl=tr → geo 37.79174, 32.6687905. Adres metni: Erler, 14666 Sokak No:21, Karatay/Konya.
-- **Facebook:** Kullanıcının verdiği link kullanılacak: https://www.facebook.com/share/r/1DPdBjTeEA/
+- **Facebook:** Kullanıcının verdiği link kullanılacak: https://www.facebook.com/aziz.caglar.1614
 - **Vergi:** Konya Karatay Mevlana Vergi Dairesi, 212 448 01956. Not: 11 hane (TC kimlik numarası olabilir). Kişisel veri olduğu için sitede herkese açık YAYINLANMAYACAK. KVKK metninde gerekli değil; sadece veri sorumlusu adı ve adresi yazılacak.
 - **Google İşletme medyası:** `_kaynaklar/google-isletme/` klasörüne eklendi (11 fotoğraf, 10 video, hepsi gerçek çiftlik). Kullanım: galeri, teslimat, hakkımızda.
 - **Ana sayfa medyası:** Kullanıcının isteği üzerine stok görsel ve videolardan, en güzel görünenler seçilecek. Kullanıcı beğenmezse değiştirilecek.
@@ -90,7 +90,7 @@ Sayfa bazlı yönlendirmeler (`/kurumsal` → `/hakkimizda` vb.) sitede hazır (
 23. **Logo:** Elde sadece 500×500 JPEG var. Kalitesi artırılmaya çalışılacak (temiz SVG'ye yeniden çizim / vektörleştirme).
 24. **Hakkımızda:** Sonra tamamlanacak.
 25. **Sahibinden:** Sosyal medya ikonlarının yanında duracak.
-26. **Facebook:** https://www.facebook.com/share/r/1DPdBjTeEA/ (kullanılacak).
+26. **Facebook:** https://www.facebook.com/aziz.caglar.1614 (kullanılacak).
 
 ## Eski siteden doğrulanan bilgiler
 
