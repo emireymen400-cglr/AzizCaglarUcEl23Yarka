@@ -4,14 +4,35 @@ Son güncelleme: 2026-09-29 (yayın öncesi denetim sonrası).
 
 ## Açık kalanlar (sonra sorulacak / hatırlatılacak)
 
-- [ ] **Eski alan adı yönlendirmesi + Search Console "Adres değişikliği":** Kullanıcı `ucel23yarka.com`'u aldı, Search Console ve GA4'ü kurdu (2026-09-29). Eski domain (xn--el23tavukuluk-hgbj93a.com) yeni siteye bağlanıp kalıcı yönlendirilecek; talimat verildi.
-- [ ] **Barındırma kararı:** Vercel Hobby ticari kullanıma kapalı (Fair Use Guidelines). Seçenekler: Vercel Pro (20 $/ay) veya ücretsiz ve ticari kullanıma açık Cloudflare Pages (statik dışa aktarım). Kullanıcıya soruldu.
+- [ ] **Barındırma:** Kullanıcı Vercel'i seçti (2026-09-29). Not: Vercel Hobby koşullarında "ürün/hizmet satışının tanıtımı" ticari kullanım sayılıyor; kullanıcı bilgilendirildi. Emin olmak için Vercel Support'a sorulabilir (vercel.com/help). Gerekirse ücretsiz alternatif: Cloudflare Pages (statik dışa aktarım).
 - [ ] **TikTok / YouTube** — hesaplar açılınca eklenecek (şu an sitede GÖSTERİLMEYECEK).
 - [ ] **EN SON YAPILACAK — YouTube:** Kullanıcı YouTube kanalı açacak. Açılınca `ciftlik-kahverengi-yumurtacilar-01` (100 sn) ve `-03` (85 sn) YouTube'a taşınacak, `lite-youtube` ile gömülecek, VideoObject'e YouTube URL'si eklenecek; kanal linki `site.ts` sosyal hesaplara eklenecek. Şimdilik CRF 32 ile 8,9 / 7,6 MB olarak sitede.
 - [ ] **Vercel kotası:** Uygulandı: videolar tıklayınca yüklenir (hero hariç, o da sayfa yüklendikten sonra), galeri hazır küçük görseller (360/640px) kullanır, next/image yalnızca ~40 görsel için. Yayından sonra Vercel → Usage sayfası kontrol edilecek.
 - [ ] **Yayından sonra PageSpeed Insights:** Yerel Lighthouse (HTTP/1.1, gzip) mobil Performance: ana sayfa 88, tür 92–93, galeri 85–86. Vercel'de (HTTP/2, Brotli, CDN) pagespeed.web.dev ile tekrar ölçülecek; 90 altı kalırsa hero posteri ve galeri ilk satırı yeniden ele alınacak.
 - [ ] **GA4 panel ayarı:** Admin → Özel tanımlar: `sayfa_yolu` ve `tur` etkinlik kapsamlı boyut olarak eklenmeli; Vercel'e `NEXT_PUBLIC_GA_ID` ortam değişkeni girilmeli.
 - [ ] **KVKK ve çerez metni:** Genel şablon; yayından önce hukukçu kontrolü önerilir.
+
+## Yayından sonra yapılacaklar (sonra bakılacak)
+
+### A. Eski alan adını yeni siteye yönlendirme
+Eski: `üçel23tavukçuluk.com` (`xn--el23tavukuluk-hgbj93a.com`, Wix). Yeni: `ucel23yarka.com`.
+Sayfa bazlı yönlendirmeler (`/kurumsal` → `/hakkimizda` vb.) sitede hazır (`next.config.ts`, 308 kalıcı).
+
+- [ ] Eski alan adının yenilemesini **iptal etme**; taşımadan sonra en az 1 yıl (tercihen daha uzun) tut.
+- [ ] Wix'te eski alan adını Wix sitesinden ayır (site planı sonra iptal edilebilir, alan adı kaydı kalmalı).
+- [ ] Vercel → Proje → Settings → Domains → `xn--el23tavukuluk-hgbj93a.com` ve `www.xn--el23tavukuluk-hgbj93a.com` ekle → "Redirect to ucel23yarka.com" seç.
+- [ ] Vercel'in gösterdiği DNS kayıtlarını (A ve CNAME) Wix → Alan Adları → DNS'e gir.
+- [ ] Test: tarayıcıda `üçel23tavukçuluk.com/kurumsal` → `ucel23yarka.com/hakkimizda`; `/ataks` → `/tavuklarimiz/atak-s`; `/tavuklarımız` → `/tavuklarimiz`.
+
+### B. Search Console (kullanıcı yeni mülkü kurdu)
+- [ ] Yeni mülk (`ucel23yarka.com`): Site Haritaları → `https://ucel23yarka.com/sitemap.xml` gönder.
+- [ ] Eski alan adını ayrı mülk olarak ekle ve DNS TXT kaydıyla doğrula (Wix DNS).
+- [ ] Eski mülk → Ayarlar → **Adres değişikliği** → yeni mülkü seç (yönlendirmeler çalışır durumdayken).
+- [ ] Birkaç hafta boyunca yeni mülkte "Sayfalar" raporunu izle; eski URL'lerin yenilerle yer değiştirdiğini kontrol et.
+
+### C. Linkleri güncelleme
+- [ ] Google İşletme Profili → web sitesi: `https://ucel23yarka.com`
+- [ ] Instagram, Facebook, Sahibinden profillerindeki site linki.
 
 ## Üçüncü cevap turu (2026-09-29)
 
