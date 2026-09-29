@@ -25,7 +25,7 @@ export default function Tavuklarimiz() {
         cizim={<Tuy />}
         giris={
           <p>
-            {turSayisi} türden yumurtacı yarka sunuyoruz. Yumurta rengine, kümesinize ve yetiştirme şeklinize göre seçim
+            Yumurta verimleriyle kendini kanıtlamış yumurtacı yarkalar sunuyoruz. Yumurta rengine, kümesinize ve yetiştirme şeklinize göre seçim
             yapabilirsiniz; kararsız kalırsanız bize yazın, birlikte seçelim.
           </p>
         }

@@ -1,6 +1,7 @@
 import { MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { CerezTercihleriButonu } from "@/components/CerezTercihleriButonu";
 import { TavukSiluet } from "@/components/illustrations";
 import { Container } from "@/components/ui/Container";
 import { SosyalIkon, WhatsAppIkon } from "@/components/ui/MarkaIkonlari";
@@ -116,6 +117,9 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <CerezTercihleriButonu className="hover:underline underline-offset-4" />
+              </li>
             </ul>
           </div>
         </Container>

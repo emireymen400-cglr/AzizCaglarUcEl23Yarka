@@ -20,7 +20,7 @@ import { videolar } from "@/content/galeri";
 import { gorselBoyutlari, videoDosyalari } from "@/content/media.generated";
 import { site } from "@/content/site";
 import { oneCikanSorular } from "@/content/sss";
-import { tavuklar, turSayisi } from "@/content/tavuklar";
+import { tavuklar } from "@/content/tavuklar";
 import { sayfaMeta } from "@/lib/metadata";
 import { mesajlar, olaylar, whatsappLinki } from "@/lib/whatsapp";
 
@@ -111,7 +111,7 @@ export default function AnaSayfa() {
                 Tavuklarımız
               </h2>
               <p className="mt-3 max-w-prose text-lg text-white">
-                {turSayisi} türden yumurtacı yarka: kahverengi, beyaz ve krem yumurta verenler, gezen tavuğa uygun olanlar.
+                Yumurta verimleriyle kendini kanıtlamış yumurtacı yarkalar sunuyoruz: kahverengi, beyaz ve krem yumurta verenler, gezen tavuğa uygun olanlar.
               </p>
             </div>
             <Button href="/tavuklarimiz" tur="acik" className="self-start md:self-auto">

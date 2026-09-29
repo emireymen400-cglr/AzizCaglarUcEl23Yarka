@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { CerezOnayi } from "@/components/CerezOnayi";
 import { JsonLd } from "@/components/JsonLd";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -26,6 +27,9 @@ export const metadata: Metadata = {
   ...(process.env.VERCEL_ENV === "production" ? {} : { robots: { index: false, follow: false } }),
 };
 
+// GA ölçüm kimliği yalnızca beklenen biçimdeyse kullanılır (satır içi script'e girdiği için)
+const gaId = site.gaId && /^G-[A-Z0-9]+$/.test(site.gaId) ? site.gaId : undefined;
+
 export const viewport: Viewport = {
   themeColor: "#234386",
 };
@@ -39,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        <CerezOnayi gaId={gaId} />
         <JsonLd veri={isletmeSchema()} />
       </body>
     </html>

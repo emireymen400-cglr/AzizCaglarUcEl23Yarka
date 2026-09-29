@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CerezTercihleriButonu } from "@/components/CerezTercihleriButonu";
 import { CtaBolumu } from "@/components/CtaBolumu";
 import { IletisimAraclari } from "@/components/layout/IletisimAraclari";
 import { PageHeader } from "@/components/PageHeader";
@@ -7,8 +8,6 @@ import { YasalMetin } from "@/components/YasalMetin";
 import { site } from "@/content/site";
 import { sayfaMeta } from "@/lib/metadata";
 
-// TODO(geliştirme): Çerez onay bandı ve GA4 henüz eklenmedi. Eklenince "Tercihlerinizi değiştirme"
-// bölümüne tercih paneli linki konacak ve çerez adları (_ga, _ga_<ID>) doğrulanacak.
 // TODO(hukuk): Yayından önce hukukçu kontrolü önerilir.
 
 export const metadata = sayfaMeta({
@@ -42,7 +41,9 @@ export default function CerezPolitikasi() {
             </li>
             <li>
               <strong>Analitik çerezler (Google Analytics):</strong> Yalnızca onay vermeniz hâlinde, sitenin nasıl kullanıldığını
-              anonim istatistiklerle ölçmek için kullanılır. Onay vermezseniz yüklenmez.
+              istatistiklerle ölçmek için kullanılır. Onay vermezseniz yüklenmez. Kullanılan çerezler: <code>_ga</code> ve{" "}
+              <code>_ga_&lt;ölçüm kimliği&gt;</code> (en fazla 2 yıl saklanır, Google LLC tarafından sağlanır). Telefon ve WhatsApp
+              bağlantılarına tıklamalar, hangi sayfada ve hangi tür için tıklandığı bilgisiyle sayılır.
             </li>
             <li>
               <strong>Harita:</strong> İletişim sayfasındaki Google Haritalar yalnızca &quot;Haritayı göster&quot; düğmesine
@@ -57,7 +58,10 @@ export default function CerezPolitikasi() {
           <h2>Tercihlerinizi değiştirme</h2>
           <p>
             Tarayıcınızın ayarlarından çerezleri silebilir veya engelleyebilirsiniz. Analitik çerezlere verdiğiniz onayı dilediğiniz
-            zaman geri alabilirsiniz.
+            zaman geri alabilirsiniz; &quot;Reddet&quot; seçtiğinizde analitik çerezler silinir.
+          </p>
+          <p>
+            <CerezTercihleriButonu className="min-h-11 rounded-button border-2 border-indigo px-6 font-label text-[12.5px] font-medium uppercase tracking-[0.12em] text-indigo hover:bg-indigo/5" />
           </p>
 
           <h2>Kişisel verileriniz</h2>
