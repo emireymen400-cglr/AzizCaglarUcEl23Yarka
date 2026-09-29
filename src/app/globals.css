@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* Tasarım tokenları — kaynak: DESIGN.md §10 */
+@theme {
+  --color-indigo: #234386;
+  --color-indigo-dark: #1d3870;
+  --color-yolk: #ffc400;
+  --color-orange: #ed7328;
+  --color-orange-text: #b8561a;
+  --color-sky: #6aa8dc;
+  --color-straw: #d2b68c;
+  --color-pasture: #a2d3a6;
+  --color-ink: #000000;
+  --color-white: #ffffff;
+  --color-cream: #fbf9f6;
+  --color-whatsapp: #25d366;
+
+  --font-display: var(--font-bebas), "Oswald", sans-serif;
+  --font-label: var(--font-jost), "Futura", sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-script: var(--font-caveat), cursive;
+
+  --radius-card: 8px;
+  --radius-tag: 16px;
+  --radius-button: 32px;
+
+  --shadow-card: -14px 10px 49px 0 rgba(0, 0, 0, 0.16);
+  --shadow-hover: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+
+  /* Tip ölçeği (mobil → masaüstü) */
+  --text-display: clamp(3.5rem, 2.4rem + 4.8vw, 6rem);
+  --text-display--line-height: 0.92;
+  --text-h1: clamp(2.75rem, 2.2rem + 2.4vw, 4rem);
+  --text-h1--line-height: 0.95;
+  --text-h2: clamp(2.25rem, 1.95rem + 1.3vw, 3rem);
+  --text-h2--line-height: 1;
+  --text-h3: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+  --text-h3--line-height: 1;
+  --text-script: clamp(1.625rem, 1.4rem + 1vw, 2.25rem);
+  --text-script--line-height: 1.15;
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.3;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 1.0625rem;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    color: var(--color-indigo);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility font-tracked {
+  font-family: var(--font-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
