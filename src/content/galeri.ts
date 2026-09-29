@@ -29,7 +29,7 @@ export type GaleriVideosu = {
 };
 
 /** Videoların siteye eklendiği tarih (VideoObject uploadDate) */
-export const VIDEO_YUKLEME_TARIHI = "2026-09-29";
+export const VIDEO_YUKLEME_TARIHI = "2026-09-29T00:00:00+03:00";
 
 const boyut = (src: string) => {
   const b = gorselBoyutlari[src];

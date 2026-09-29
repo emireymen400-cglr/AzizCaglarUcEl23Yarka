@@ -14,7 +14,6 @@ export const metadata = sayfaMeta({
   baslik: "Galeri: Çiftliğimiz ve Yarkalarımız",
   aciklama: "Konya Karatay'daki çiftliğimizden yarka fotoğrafları ve videoları: beyaz, kahverengi ve koyu renkli yarka sürüleri, teslimat aracımız.",
   yol: "/galeri",
-  gorsel: { src: "/images/ciftlik/kumeste-beyaz-yarkalar-03.webp", alt: "Çiftliğimizde beyaz yarka sürüsü" },
 });
 
 const kucukYol = (src: string) => src.replace(/\/([^/]+)$/, "/kucuk/$1");

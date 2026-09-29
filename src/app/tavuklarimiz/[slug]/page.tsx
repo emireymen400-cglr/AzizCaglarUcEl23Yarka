@@ -33,12 +33,12 @@ export async function generateMetadata({ params }: PageProps<"/tavuklarimiz/[slu
   const { slug } = await params;
   const tur = turBul(slug);
   if (!tur) return {};
-  const kapak = tur.gorseller[0];
+  // OG görseli: ./opengraph-image.tsx (tür fotoğrafı + marka renkleri)
   return sayfaMeta({
     baslik: tur.seo.title,
     aciklama: tur.seo.description,
     yol: `/tavuklarimiz/${tur.slug}`,
-    gorsel: { src: kapak.src, alt: kapak.alt, ...gorselBoyutlari[kapak.src] },
+    kendiOgGorseli: true,
   });
 }
 

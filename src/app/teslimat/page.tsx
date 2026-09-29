@@ -17,7 +17,6 @@ export const metadata = sayfaMeta({
   baslik: "Türkiye Geneli Yarka Teslimatı",
   aciklama: "Yarkalar Türkiye'nin tüm il ve ilçelerine kendi araçlarımızla, sepetler içinde teslim edilir. Yoldaki kayıplar bize aittir. Süreç ve sık sorulanlar.",
   yol: "/teslimat",
-  gorsel: { ...teslimatGorseli, ...gorselBoyutlari[teslimatGorseli.src] },
 });
 
 export default function Teslimat() {

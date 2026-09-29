@@ -19,7 +19,6 @@ export const metadata: Metadata = {
     type: "website",
     locale: "tr_TR",
     siteName: site.ad,
-    images: [{ url: "/og-logo.png", width: 1200, height: 630, alt: site.ad }],
   },
   twitter: { card: "summary_large_image" },
   formatDetection: { telephone: false },

@@ -17,7 +17,6 @@ export const metadata = sayfaMeta({
   baslik: "Hakkımızda: Üçel 23 Tavukçuluk",
   aciklama: "Aziz Çağlar'ın Konya Karatay'daki çiftliğinde yumurtacı yarka yetiştiriyor, Türkiye'nin tüm il ve ilçelerine kendi aracımızla ulaştırıyoruz.",
   yol: "/hakkimizda",
-  gorsel: { src: "/images/ciftlik/kumeste-beyaz-yarkalar-03.webp", alt: "Çiftliğimizde beyaz yarka sürüsü" },
 });
 
 const ilkeler = [
