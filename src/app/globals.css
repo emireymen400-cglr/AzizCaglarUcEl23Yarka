@@ -31,13 +31,13 @@
   --shadow-hover: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
 
   /* Tip ölçeği (mobil → masaüstü) */
-  --text-display: clamp(3.5rem, 2.4rem + 4.8vw, 6rem);
+  --text-display: clamp(2.5rem, 1.5rem + 5vw, 6rem);
   --text-display--line-height: 0.92;
-  --text-h1: clamp(2.75rem, 2.2rem + 2.4vw, 4rem);
+  --text-h1: clamp(2.125rem, 1.6rem + 2.8vw, 4rem);
   --text-h1--line-height: 0.95;
-  --text-h2: clamp(2.25rem, 1.95rem + 1.3vw, 3rem);
+  --text-h2: clamp(1.875rem, 1.5rem + 1.8vw, 3rem);
   --text-h2--line-height: 1;
-  --text-h3: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+  --text-h3: clamp(1.375rem, 1.2rem + 0.9vw, 2rem);
   --text-h3--line-height: 1;
   --text-script: clamp(1.625rem, 1.4rem + 1vw, 2.25rem);
   --text-script--line-height: 1.15;

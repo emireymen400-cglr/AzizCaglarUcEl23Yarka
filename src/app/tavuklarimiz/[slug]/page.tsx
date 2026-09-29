@@ -91,10 +91,26 @@ export default async function TurSayfasi({ params }: PageProps<"/tavuklarimiz/[s
               { ad: tur.ad, yol: `/tavuklarimiz/${tur.slug}` },
             ]}
           />
-          <div className="mt-8 grid items-center gap-12 pb-16 lg:grid-cols-[1fr_1.05fr] lg:gap-16 lg:pb-24">
-            <div className="relative order-2 lg:order-1">
-              <h1 className="text-display">{tur.ad} yarka</h1>
-              <p className="mt-5 max-w-prose text-lg leading-relaxed">{tur.kisaAciklama}</p>
+          {/* Mobilde başlık ile küçük kapak fotoğrafı yan yana, metin ve butonlar altta; lg'de fotoğraf sağda iki satırı kaplar */}
+          <div className="mt-6 grid grid-cols-[1fr_40%] items-center gap-x-5 gap-y-6 pb-16 sm:grid-cols-[1fr_36%] lg:mt-8 lg:grid-cols-[1fr_1.05fr] lg:gap-x-16 lg:gap-y-0 lg:pb-24">
+            <h1 className="text-display lg:self-end">{tur.ad} yarka</h1>
+            <div className="relative w-full lg:row-span-2 lg:mx-auto lg:max-w-md">
+              <Blob renk={tur.accent} sekil={0} dondur={15} belir className="absolute -right-8 -top-6 w-[110%] lg:-right-16 lg:-top-12" />
+              <Image
+                src={kapak.src}
+                alt={kapak.alt}
+                width={kb.w}
+                height={kb.h}
+                preload
+                fetchPriority="high"
+                quality={60}
+                sizes="(min-width: 1024px) 448px, 40vw"
+                className="relative aspect-[4/5] w-full rotate-3 rounded-card border-4 border-white object-cover shadow-card lg:rotate-2 lg:border-0"
+              />
+              <BugdayBasagi className="absolute -bottom-5 -left-5 w-9 -rotate-12 text-indigo lg:-bottom-8 lg:-left-8 lg:w-14" />
+            </div>
+            <div className="relative col-span-2 lg:col-span-1 lg:self-start">
+              <p className="max-w-prose text-lg leading-relaxed lg:mt-5">{tur.kisaAciklama}</p>
               <ul className="mt-6 flex flex-wrap gap-2" aria-label="Öne çıkan özellikler">
                 <li>
                   <Badge yumurtaRengi={tur.yumurtaRengi}>{tur.yumurtaRengi} yumurta</Badge>
@@ -136,21 +152,6 @@ export default async function TurSayfasi({ params }: PageProps<"/tavuklarimiz/[s
               ) : (
                 <p className="mt-4 max-w-prose text-sm text-ink/75">Fiyat ve güncel stok bilgisi için bizi arayabilir veya WhatsApp üzerinden yazabilirsiniz. Size mevcut yarka çeşitleri ve sipariş seçenekleri hakkında güncel bilgi verelim.</p>
               )}
-            </div>
-            <div className="relative order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-md">
-              <Blob renk={tur.accent} sekil={0} dondur={15} belir className="absolute -right-16 -top-12 w-[110%]" />
-              <Image
-                src={kapak.src}
-                alt={kapak.alt}
-                width={kb.w}
-                height={kb.h}
-                preload
-                fetchPriority="high"
-                quality={60}
-                sizes="(min-width: 1024px) 448px, (min-width: 640px) 384px, 90vw"
-                className="relative aspect-[4/5] w-full rounded-card object-cover shadow-card lg:rotate-2"
-              />
-              <BugdayBasagi className="absolute -bottom-8 -left-8 w-14 -rotate-12 text-indigo" />
             </div>
           </div>
         </Container>

@@ -46,10 +46,10 @@ Tip ölçeği (mobil → masaüstü, `clamp()` ile):
 
 | Token | Mobil | Masaüstü | Font |
 |---|---|---|---|
-| `display` | 56px | 96px | Bebas Neue |
-| `h1` | 44px | 64px | Bebas Neue |
-| `h2` | 36px | 48px | Bebas Neue |
-| `h3` | 24px | 32px | Bebas Neue |
+| `display` | 40px | 96px | Bebas Neue |
+| `h1` | 34px | 64px | Bebas Neue |
+| `h2` | 30px | 48px | Bebas Neue |
+| `h3` | 22px | 32px | Bebas Neue |
 | `script` | 26px | 36px | Caveat |
 | `body` | 16px | 17px | Inter |
 | `small` | 14px | 14px | Inter |

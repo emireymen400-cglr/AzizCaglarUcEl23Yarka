@@ -51,7 +51,7 @@ export function HeroVideo({ src, poster, posterW, posterH, className }: Props) {
         preload
         fetchPriority="high"
         quality={60}
-        sizes="(min-width: 1024px) 520px, (min-width: 488px) 448px, calc(100vw - 52px)"
+        sizes="(min-width: 1024px) 520px, 42vw"
         className="absolute inset-0 size-full object-cover"
       />
       <video

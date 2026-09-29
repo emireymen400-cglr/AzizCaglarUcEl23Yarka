@@ -35,9 +35,10 @@ export default function Teslimat() {
       />
 
       <Section className="pt-4 md:pt-6" aria-labelledby="nasil">
-        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <Blob renk="sky" sekil={2} dondur={-10} className="absolute -left-10 -top-10 w-3/4 opacity-80" />
+        {/* Mobilde küçük fotoğraf başlığın yanında, maddeler altta tam genişlik */}
+        <div className="grid grid-cols-[40%_1fr] items-center gap-x-6 gap-y-8 lg:grid-cols-2 lg:items-start lg:gap-x-16 lg:gap-y-0">
+          <div className="relative w-full lg:row-span-2">
+            <Blob renk="sky" sekil={2} dondur={-10} className="absolute -left-5 -top-5 w-3/4 opacity-80 lg:-left-10 lg:-top-10" />
             <Image
               src={teslimatGorseli.src}
               alt={teslimatGorseli.alt}
@@ -45,15 +46,15 @@ export default function Teslimat() {
               height={b.h}
               preload
               fetchPriority="high"
-              sizes="(min-width: 1024px) 560px, 90vw"
-              className="relative aspect-[4/5] w-full rounded-card object-cover"
+              sizes="(min-width: 1024px) 560px, 40vw"
+              className="relative aspect-[4/5] w-full -rotate-3 rounded-card object-cover lg:rotate-0"
             />
           </div>
-          <div>
-            <h2 id="nasil" className="text-h2">
-              Nasıl taşıyoruz?
-            </h2>
-            <ul className="mt-8 border-t border-ink">
+          <h2 id="nasil" className="text-h2">
+            Nasıl taşıyoruz?
+          </h2>
+          <div className="col-span-2 lg:col-span-1 lg:col-start-2">
+            <ul className="border-t border-ink lg:mt-8">
               {teslimatBilgileri.map((b) => (
                 <li key={b.baslik} className="border-b border-ink py-5">
                   <h3 className="font-body text-lg font-semibold normal-case tracking-normal text-indigo">{b.baslik}</h3>

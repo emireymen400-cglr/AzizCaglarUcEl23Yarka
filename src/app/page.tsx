@@ -61,8 +61,9 @@ export default function AnaSayfa() {
     <>
       {/* ---------------------------------------------------------------- HERO */}
       <section className="relative overflow-hidden bg-cream">
-        <Container className="grid items-center gap-10 pb-16 pt-8 md:pb-20 md:pt-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-24">
-          <div className="relative z-10">
+        {/* Mobilde başlık ile eğik video yan yana, butonlar altta tam genişlik; lg'de video sağda iki satırı kaplar */}
+        <Container className="grid grid-cols-[1fr_42%] items-center gap-x-5 gap-y-8 pb-16 pt-8 sm:grid-cols-[1fr_38%] md:pb-20 md:pt-12 lg:grid-cols-[1.05fr_1fr] lg:gap-x-16 lg:gap-y-0 lg:pb-24">
+          <div className="relative z-10 lg:self-end">
             <h1 className="text-display">Sağlıklı yarka, kapınıza kadar</h1>
             <p className="relative mt-3 inline-block font-script text-script text-indigo">
               Konya&apos;daki çiftliğimizden kümesinize
@@ -77,7 +78,19 @@ export default function AnaSayfa() {
                 <path pathLength={1} d="M92 16 L105 27 L90 34" stroke="currentColor" strokeWidth={1.25} strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          </div>
+
+          <div className="relative w-full lg:row-span-2">
+            <Blob renk="yolk" sekil={0} belir className="absolute -right-10 -top-8 w-[125%] lg:-right-32 lg:-top-16 lg:w-[115%]" />
+            <Blob renk="pasture" sekil={2} dondur={40} belir className="gecikmeli absolute -bottom-6 -left-6 w-1/2 lg:-bottom-14 lg:-left-16" />
+            <div className="relative rotate-[10deg] overflow-hidden rounded-card border-4 border-white bg-white shadow-card lg:rotate-[-8deg] lg:border-[6px]">
+              <HeroVideo src={hero.src} poster={hero.poster} posterW={hero.w} posterH={hero.h} className="aspect-[4/5] w-full" />
+            </div>
+            <BugdayBasagi ciz className="absolute -bottom-8 -left-5 w-10 rotate-[-8deg] text-indigo md:w-16 lg:-bottom-10 lg:-left-12 lg:w-20" />
+          </div>
+
+          <div className="relative z-10 col-span-2 lg:col-span-1 lg:self-start">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:mt-8">
               <Button href={whatsappLinki(mesajlar.genel)} olay={olaylar.whatsapp} ikon={<WhatsAppIkon className="size-4.5" />}>
                 WhatsApp&apos;tan Sipariş Ver
               </Button>
@@ -86,15 +99,6 @@ export default function AnaSayfa() {
               </Button>
             </div>
             <GuvenSatiri className="mt-8 border-t border-ink/15 pt-5" />
-          </div>
-
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <Blob renk="yolk" sekil={0} belir className="absolute -right-24 -top-16 w-[115%] md:-right-32" />
-            <Blob renk="pasture" sekil={2} dondur={40} belir className="gecikmeli absolute -bottom-14 -left-16 w-1/2" />
-            <div className="relative overflow-hidden rounded-card border-[6px] border-white bg-white lg:-rotate-2">
-              <HeroVideo src={hero.src} poster={hero.poster} posterW={hero.w} posterH={hero.h} className="aspect-[4/3] w-full lg:aspect-[4/5]" />
-            </div>
-            <BugdayBasagi ciz className="absolute -bottom-10 -left-6 w-16 rotate-[-8deg] text-indigo md:w-20 lg:-left-12" />
           </div>
         </Container>
       </section>
@@ -129,24 +133,25 @@ export default function AnaSayfa() {
 
       {/* ---------------------------------------------------------------- NEDEN ÜÇEL 23 */}
       <Section aria-labelledby="neden-baslik">
-        <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-20">
-          <div className="relative">
-            <Blob renk="pasture" sekil={1} dondur={-20} className="absolute -left-10 -top-10 w-3/4" />
+        {/* Mobilde küçük fotoğraf başlığın yanında, maddeler altta tam genişlik */}
+        <div className="grid grid-cols-[40%_1fr] items-center gap-x-6 gap-y-8 md:grid-cols-2 md:gap-x-12 md:gap-y-0 lg:gap-x-20">
+          <div className="relative md:row-span-2">
+            <Blob renk="pasture" sekil={1} dondur={-20} className="absolute -left-5 -top-5 w-3/4 md:-left-10 md:-top-10" />
             <Image
               src={neden}
               alt="Çayırda serbestçe dolaşan kahverengi yumurtacı tavuk sürüsü"
               width={gorselBoyutlari[neden].w}
               height={gorselBoyutlari[neden].h}
-              sizes="(min-width: 768px) 45vw, 100vw"
-              className="relative aspect-[4/5] w-full rounded-card object-cover"
+              sizes="(min-width: 768px) 45vw, 40vw"
+              className="relative aspect-[4/5] w-full -rotate-3 rounded-card object-cover md:rotate-0"
             />
-            <YuvadaYumurtalar className="absolute -bottom-8 -right-4 w-36 rotate-6 text-indigo md:-right-10 md:w-44" />
+            <YuvadaYumurtalar className="absolute -bottom-5 -right-3 w-20 rotate-6 text-indigo md:-bottom-8 md:-right-10 md:w-44" />
           </div>
-          <div>
-            <h2 id="neden-baslik" className="text-h2">
-              Neden Üçel 23?
-            </h2>
-            <ul className="mt-8 divide-y divide-ink border-y border-ink">
+          <h2 id="neden-baslik" className="text-h2 md:self-end">
+            Neden Üçel 23?
+          </h2>
+          <div className="col-span-2 md:col-span-1 md:col-start-2 md:self-start">
+            <ul className="divide-y divide-ink border-y border-ink md:mt-8">
               {nedenler.map((n) => (
                 <li key={n.baslik} className="py-5">
                   <h3 className="font-body text-lg font-semibold normal-case tracking-normal text-indigo">{n.baslik}</h3>
