@@ -3,7 +3,7 @@
 
 import type { Metadata } from "next";
 import Image from "next/image";
-import { gorselBoyutlari, videoDosyalari } from "@/content/medya.generated";
+import { gorselBoyutlari, videoDosyalari } from "@/content/media.generated";
 import { tavuklar, turSayisi } from "@/content/tavuklar";
 
 export const metadata: Metadata = {

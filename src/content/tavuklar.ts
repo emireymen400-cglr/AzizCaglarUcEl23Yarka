@@ -56,7 +56,7 @@ export type Tur = {
 };
 
 const img = (slug: string, no: number, alt: string): Gorsel => ({
-  src: `/images/turler/${slug}-yarka-${String(no).padStart(2, "0")}.webp`,
+  src: `/images/tavuklar/${slug}/${slug}-yarka-${String(no).padStart(2, "0")}.webp`,
   alt,
 });
 
@@ -310,8 +310,8 @@ export const tavuklar: Tur[] = [
     sistem: "Bahçe, köy kümesi, açık alan",
     accent: "sky",
     gorseller: [
-      img("pleymut", 1, "Saman üzerinde duran iki siyah-beyaz çizgili Pleymut tavuğu"),
-      img("pleymut", 2, "Kuru yapraklar arasında yürüyen çizgili tüylü Pleymut (Plymouth Rock) tavuğu"),
+      img("pleymut", 2, "Saman üzerinde duran iki siyah-beyaz çizgili Pleymut tavuğu"),
+      img("pleymut", 1, "Kuru yapraklar arasında yürüyen çizgili tüylü Pleymut (Plymouth Rock) tavuğu"),
     ],
     whatsappMesaji: "Merhaba, Pleymut yarka hakkında bilgi almak istiyorum.",
     ekBolum: {
