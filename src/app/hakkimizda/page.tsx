@@ -68,7 +68,7 @@ export default function Hakkimizda() {
         <ul className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2">
           {ilkeler.map((i) => (
             <li key={i.baslik} className="border-t border-ink pt-4">
-              <h3 className="font-body text-lg font-semibold normal-case tracking-normal text-indigo">{i.baslik}</h3>
+              <h3 className="font-body text-base font-semibold normal-case md:text-lg tracking-normal text-indigo">{i.baslik}</h3>
               <p className="mt-1.5">{i.metin}</p>
             </li>
           ))}

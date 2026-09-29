@@ -155,21 +155,21 @@ export function Header() {
               <span className="sr-only">Menüyü kapat</span>
             </button>
           </div>
-          <nav aria-label="Mobil menü" className="mt-8">
+          <nav aria-label="Mobil menü" className="mt-6">
             <ul className="space-y-1">
               {anaMenu.map((m) => (
                 <li key={m.yol}>
                   <Link
                     href={m.yol}
                     aria-current={aktif(m.yol) ? "page" : undefined}
-                    className="block py-2 font-display text-[44px] uppercase leading-none tracking-[0.04em] text-indigo aria-[current=page]:text-orange-text"
+                    className="block py-1.5 font-display text-[30px] uppercase leading-none tracking-[0.04em] text-indigo aria-[current=page]:text-orange-text"
                   >
                     {m.ad}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/hakkimizda" className="block py-2 font-display text-[44px] uppercase leading-none tracking-[0.04em] text-indigo">
+                <Link href="/hakkimizda" className="block py-1.5 font-display text-[30px] uppercase leading-none tracking-[0.04em] text-indigo">
                   Hakkımızda
                 </Link>
               </li>
@@ -181,7 +181,7 @@ export function Header() {
                 key={t.e164}
                 href={telLinki(t)}
                 data-olay={olaylar.telefon}
-                className="flex items-center gap-3 text-lg font-semibold text-indigo tabular-nums"
+                className="flex items-center gap-3 text-base font-semibold text-indigo tabular-nums"
               >
                 <Phone aria-hidden className="size-5" strokeWidth={1.75} />
                 {t.gorunen}

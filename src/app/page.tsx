@@ -112,7 +112,7 @@ export default function AnaSayfa() {
               <h2 id="turler-baslik" className="text-h1 text-white">
                 Tavuklarımız
               </h2>
-              <p className="mt-3 max-w-prose text-lg text-white">
+              <p className="mt-3 max-w-prose text-white md:text-lg">
                 Yumurta verimleriyle kendini kanıtlamış yumurtacı yarkalar sunuyoruz: kahverengi, beyaz ve krem yumurta verenler, gezen tavuğa uygun olanlar.
               </p>
             </div>
@@ -121,10 +121,10 @@ export default function AnaSayfa() {
             </Button>
           </div>
         </Container>
-        <ul className="serit mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-6 pt-8 md:px-8 xl:px-[max(2rem,calc((100vw-1200px)/2+2rem))]">
+        <ul className="serit mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-6 pt-6 md:mt-10 md:gap-6 md:pt-8 md:px-8 xl:px-[max(2rem,calc((100vw-1200px)/2+2rem))]">
           {tavuklar.map((t, i) => (
-            <li key={t.slug} className="w-[74%] max-w-[290px] shrink-0 snap-start sm:w-[42%] lg:w-[270px]">
-              <BreedCard tur={t} sira={i} sizes="(min-width: 1024px) 270px, 74vw" />
+            <li key={t.slug} className="w-[44%] max-w-[210px] shrink-0 snap-start sm:w-[30%] lg:w-[270px]">
+              <BreedCard tur={t} sira={i} sizes="(min-width: 1024px) 270px, 44vw" />
             </li>
           ))}
         </ul>
@@ -154,7 +154,7 @@ export default function AnaSayfa() {
             <ul className="divide-y divide-ink border-y border-ink md:mt-8">
               {nedenler.map((n) => (
                 <li key={n.baslik} className="py-5">
-                  <h3 className="font-body text-lg font-semibold normal-case tracking-normal text-indigo">{n.baslik}</h3>
+                  <h3 className="font-body text-base font-semibold normal-case md:text-lg tracking-normal text-indigo">{n.baslik}</h3>
                   <p className="mt-1.5">{n.metin}</p>
                 </li>
               ))}

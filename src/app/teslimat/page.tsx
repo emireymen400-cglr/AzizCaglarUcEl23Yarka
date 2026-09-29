@@ -57,7 +57,7 @@ export default function Teslimat() {
             <ul className="border-t border-ink lg:mt-8">
               {teslimatBilgileri.map((b) => (
                 <li key={b.baslik} className="border-b border-ink py-5">
-                  <h3 className="font-body text-lg font-semibold normal-case tracking-normal text-indigo">{b.baslik}</h3>
+                  <h3 className="font-body text-base font-semibold normal-case md:text-lg tracking-normal text-indigo">{b.baslik}</h3>
                   <p className="mt-1.5">{b.metin}</p>
                 </li>
               ))}

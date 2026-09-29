@@ -32,10 +32,10 @@ export default function Tavuklarimiz() {
       />
 
       <Section className="pt-4 md:pt-6" aria-label="Türler">
-        <ul className="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:gap-x-8 md:gap-y-14 lg:grid-cols-4">
           {tavuklar.map((t, i) => (
             <li key={t.slug}>
-              <BreedCard tur={t} sira={i} baslikSeviyesi="h2" sizes="(min-width: 1024px) 270px, (min-width: 640px) 45vw, 90vw" />
+              <BreedCard tur={t} sira={i} baslikSeviyesi="h2" sizes="(min-width: 1024px) 270px, (min-width: 640px) 30vw, 46vw" />
             </li>
           ))}
         </ul>

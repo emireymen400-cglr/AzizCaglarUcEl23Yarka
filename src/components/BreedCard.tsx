@@ -37,7 +37,7 @@ export function BreedCard({ tur, baslikSeviyesi: H = "h3", sira = 0, className, 
         renk={tur.accent}
         sekil={(sira % 3) as 0 | 1 | 2}
         dondur={sira * 37}
-        className="absolute -right-6 -top-6 z-0 w-2/3"
+        className="absolute -right-3 -top-3 z-0 w-2/3 md:-right-6 md:-top-6"
       />
       <div className="relative z-10 flex h-full flex-col overflow-hidden rounded-card bg-white shadow-card transition-shadow duration-200 group-hover:shadow-[-18px_14px_56px_0_rgba(0,0,0,0.2)]">
         <div className="relative aspect-[4/5] overflow-hidden">
@@ -46,12 +46,12 @@ export function BreedCard({ tur, baslikSeviyesi: H = "h3", sira = 0, className, 
             alt={kapak.alt}
             width={b.w}
             height={b.h}
-            sizes={sizes ?? "(min-width: 1024px) 280px, (min-width: 640px) 45vw, 80vw"}
+            sizes={sizes ?? "(min-width: 1024px) 280px, (min-width: 640px) 30vw, 46vw"}
             className="size-full object-cover"
           />
         </div>
-        <div className="flex flex-1 flex-col gap-4 p-5">
-          <H className="text-[32px] leading-none">
+        <div className="flex flex-1 flex-col gap-2.5 p-3 md:gap-4 md:p-5">
+          <H className="text-[22px] leading-none md:text-[32px]">
             {/* Kartın tamamı tıklanabilir: bağlantı alanı ::after ile kartı kaplar */}
             <Link
               href={`/tavuklarimiz/${tur.slug}`}
@@ -60,14 +60,16 @@ export function BreedCard({ tur, baslikSeviyesi: H = "h3", sira = 0, className, 
               {tur.ad}
             </Link>
           </H>
-          <ul className="flex flex-wrap gap-2">
+          <ul className="flex flex-wrap gap-1.5 md:gap-2">
             {rozetler.map((r) => (
               <li key={r.metin}>
-                <Badge yumurtaRengi={r.yumurta ? tur.yumurtaRengi : undefined}>{r.metin}</Badge>
+                <Badge yumurtaRengi={r.yumurta ? tur.yumurtaRengi : undefined} kompakt>
+                  {r.metin}
+                </Badge>
               </li>
             ))}
           </ul>
-          <span className="mt-auto inline-flex items-center gap-2 font-label text-[13px] font-medium uppercase tracking-[0.12em] text-indigo">
+          <span className="mt-auto inline-flex items-center gap-2 pt-1 font-label text-[11.5px] font-medium uppercase tracking-[0.12em] text-indigo md:pt-0 md:text-[13px]">
             İncele
             <ArrowRight aria-hidden className="size-4 text-orange transition-transform group-hover:translate-x-1 motion-reduce:transition-none" strokeWidth={1.75} />
           </span>

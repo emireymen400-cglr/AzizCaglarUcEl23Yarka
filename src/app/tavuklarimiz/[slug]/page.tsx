@@ -110,7 +110,7 @@ export default async function TurSayfasi({ params }: PageProps<"/tavuklarimiz/[s
               <BugdayBasagi className="absolute -bottom-5 -left-5 w-9 -rotate-12 text-indigo lg:-bottom-8 lg:-left-8 lg:w-14" />
             </div>
             <div className="relative col-span-2 lg:col-span-1 lg:self-start">
-              <p className="max-w-prose text-lg leading-relaxed lg:mt-5">{tur.kisaAciklama}</p>
+              <p className="max-w-prose leading-relaxed md:text-lg lg:mt-5">{tur.kisaAciklama}</p>
               <ul className="mt-6 flex flex-wrap gap-2" aria-label="Öne çıkan özellikler">
                 <li>
                   <Badge yumurtaRengi={tur.yumurtaRengi}>{tur.yumurtaRengi} yumurta</Badge>
@@ -144,7 +144,7 @@ export default async function TurSayfasi({ params }: PageProps<"/tavuklarimiz/[s
                 </Button>
               </div>
               {tur.fiyat ? (
-                <p className="mt-4 text-lg">
+                <p className="mt-4 md:text-lg">
                   <span className="font-semibold text-indigo">{fiyatMetni(tur.fiyat)}</span>
                   {tur.fiyat.not ? <span className="text-ink/75"> · {tur.fiyat.not}</span> : null}
                   <span className="mt-1 block max-w-prose text-sm text-ink/75">Fiyat ve güncel stok bilgisi için bizi arayabilir veya WhatsApp üzerinden yazabilirsiniz. Size mevcut yarka çeşitleri ve sipariş seçenekleri hakkında güncel bilgi verelim.</span>
@@ -205,7 +205,7 @@ export default async function TurSayfasi({ params }: PageProps<"/tavuklarimiz/[s
         <ul className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
           {tur.ozellikler.map((o) => (
             <li key={o.baslik} className="border-t border-ink pt-4">
-              <h3 className="font-body text-lg font-semibold normal-case tracking-normal text-indigo">{o.baslik}</h3>
+              <h3 className="font-body text-base font-semibold normal-case md:text-lg tracking-normal text-indigo">{o.baslik}</h3>
               <p className="mt-1.5">{o.metin}</p>
             </li>
           ))}
@@ -265,10 +265,10 @@ export default async function TurSayfasi({ params }: PageProps<"/tavuklarimiz/[s
             Diğer türler
           </h2>
         </Container>
-        <ul className="mt-4 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-6 pt-8 md:px-8 xl:px-[max(2rem,calc((100vw-1200px)/2+2rem))]">
+        <ul className="mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-6 pt-6 md:gap-6 md:pt-8 md:px-8 xl:px-[max(2rem,calc((100vw-1200px)/2+2rem))]">
           {digerleri.map((t, i) => (
-            <li key={t.slug} className="w-[70%] max-w-[260px] shrink-0 snap-start sm:w-[40%] lg:w-[250px]">
-              <BreedCard tur={t} sira={i + 1} sizes="(min-width: 1024px) 250px, 70vw" />
+            <li key={t.slug} className="w-[44%] max-w-[210px] shrink-0 snap-start sm:w-[30%] lg:w-[250px]">
+              <BreedCard tur={t} sira={i + 1} sizes="(min-width: 1024px) 250px, 44vw" />
             </li>
           ))}
         </ul>

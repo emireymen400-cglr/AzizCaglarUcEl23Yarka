@@ -27,7 +27,7 @@ export function PageHeader({ baslik, script, giris, kirintilar, leke = "yolk", c
         <Breadcrumbs adimlar={kirintilar} />
         <h1 className="mt-6 max-w-[16ch] text-h1">{baslik}</h1>
         {script ? <p className="mt-2 font-script text-script text-indigo">{script}</p> : null}
-        {giris ? <div className="mt-5 max-w-prose text-[17px] leading-relaxed">{giris}</div> : null}
+        {giris ? <div className="mt-4 max-w-prose leading-relaxed md:mt-5 md:text-[17px]">{giris}</div> : null}
       </Container>
     </div>
   );

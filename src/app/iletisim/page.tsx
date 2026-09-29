@@ -42,7 +42,7 @@ export default function Iletisim() {
               <ul className="mt-3 space-y-2">
                 {site.telefonlar.map((t) => (
                   <li key={t.e164}>
-                    <a href={telLinki(t)} data-olay={olaylar.telefon} className="text-2xl font-semibold text-indigo tabular-nums underline-offset-4 hover:underline">
+                    <a href={telLinki(t)} data-olay={olaylar.telefon} className="text-xl font-semibold text-indigo tabular-nums md:text-2xl underline-offset-4 hover:underline">
                       {t.gorunen}
                     </a>
                     <span className="ml-3 text-sm text-ink/70">{t.whatsapp ? "Arama ve WhatsApp" : "Arama"}</span>

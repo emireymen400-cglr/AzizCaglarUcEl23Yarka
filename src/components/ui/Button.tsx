@@ -30,8 +30,8 @@ type Props = {
 };
 
 const temel =
-  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-button px-8 py-4 md:px-10 md:py-[18px] " +
-  "font-label text-[13px] font-medium uppercase tracking-[0.12em] leading-none transition-colors";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-button px-6 py-3 md:min-h-12 md:gap-2.5 md:px-10 md:py-[18px] " +
+  "font-label text-[12px] font-medium uppercase tracking-[0.1em] leading-none transition-colors md:text-[13px] md:tracking-[0.12em]";
 
 export function Button({ href, children, tur: t = "primary", ikon, olay, olayTur, className, ...aria }: Props) {
   const harici = /^(https?:|tel:|mailto:)/.test(href);
