@@ -14,6 +14,7 @@
   --color-white: #ffffff;
   --color-cream: #fbf9f6;
   --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1ebe5a;
 
   --font-display: var(--font-bebas), "Oswald", sans-serif;
   --font-label: var(--font-jost), "Futura", sans-serif;
@@ -93,4 +94,57 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.14em;
+}
+
+/* Çizgi illüstrasyonlar: boyut ne olursa olsun ekranda 1.25px kontur (DESIGN.md §4) */
+.cizim :is(path, circle) {
+  vector-effect: non-scaling-stroke;
+}
+
+/* Hero'daki tek orkestre an: çizgiler kendini çizer, lekeler belirir (DESIGN.md §8) */
+@media (prefers-reduced-motion: no-preference) {
+  .cizim-animasyon :is(path, circle) {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: cizgi-ciz 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
+  }
+  .leke-belir {
+    opacity: 0;
+    transform-origin: center;
+    animation: leke-belir 0.9s ease-out forwards;
+  }
+  .leke-belir.gecikmeli {
+    animation-delay: 0.15s;
+  }
+}
+
+@keyframes cizgi-ciz {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes leke-belir {
+  from {
+    opacity: 0;
+    scale: 0.92;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* Mobil alt iletişim çubuğu içeriğin üstüne binmesin (DESIGN.md §6).
+   Boşluk footer'ın içinde: böylece altında krem şerit kalmaz. */
+@media (max-width: 1023.98px) {
+  .footer-ic {
+    padding-bottom: calc(2.5rem + 4.25rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Yatay kaydırmalı şerit: kaydırma çubuğunu incelt */
+.serit {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.6) transparent;
 }

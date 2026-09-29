@@ -7,6 +7,7 @@
 // Çıktılar:
 //   public/images/tavuklar/<slug>/<slug>-yarka-NN.webp   (tür klasörleri)
 //   public/images/galeri/galeri-NN.webp                  (_kaynaklar/resimler = "karışık")
+//   public/images/{galeri,ciftlik}/kucuk/*.webp           (640px ızgara sürümü)
 //   public/images/ciftlik/*.webp                          (Google İşletme, gerçek çiftlik)
 //   public/images/anasayfa/*.webp                         (ana sayfa seçkisi)
 //   public/videos/<ad>.mp4 + <ad>-poster.webp
@@ -150,7 +151,10 @@ async function keskinlik(dosya: string): Promise<number> {
 const BULANIK_ESIK = 9; // deneysel; 800px üzerinde en keskin döşeme std sapması
 const DUSUK_COZUNURLUK = 1200; // en uzun kenar
 
-async function gorselIsle(kaynak: string, hedefGoreli: string, grup: string) {
+/** Galeri ızgarası için hazır küçük sürüm (Vercel görsel dönüştürme kotasını harcamamak için) */
+const KUCUK_KENAR = 640;
+
+async function gorselIsle(kaynak: string, hedefGoreli: string, grup: string, kucukSurum = false) {
   const hedef = path.join(PUB, hedefGoreli);
   fs.mkdirSync(path.dirname(hedef), { recursive: true });
   if (YENIDEN || !fs.existsSync(hedef)) {
@@ -160,6 +164,12 @@ async function gorselIsle(kaynak: string, hedefGoreli: string, grup: string) {
       .resize(MAKS_KENAR, MAKS_KENAR, { fit: "inside", withoutEnlargement: true })
       .webp({ quality: KALITE, effort: 5 })
       .toFile(hedef);
+  }
+  if (kucukSurum) {
+    const kucuk = path.join(path.dirname(hedef), "kucuk", path.basename(hedef));
+    fs.mkdirSync(path.dirname(kucuk), { recursive: true });
+    if (YENIDEN || !fs.existsSync(kucuk))
+      await sharp(hedef).resize(KUCUK_KENAR, KUCUK_KENAR, { fit: "inside", withoutEnlargement: true }).webp({ quality: 72 }).toFile(kucuk);
   }
   const m = await sharp(hedef).metadata();
   const url = "/" + hedefGoreli.split(path.sep).join("/");
@@ -228,7 +238,7 @@ async function galeri(turHashleri: Set<string>) {
     if (turHashleri.has(h)) { atlananlar.push({ dosya: f, neden: "tür klasöründeki bir görselin aynısı" }); continue; }
     if (gorulen.has(h)) { atlananlar.push({ dosya: f, neden: "galerideki başka bir görselin aynısı" }); continue; }
     gorulen.add(h);
-    await gorselIsle(d, path.join("images", "galeri", `galeri-${iki(++no)}.webp`), "Galeri (karışık)");
+    await gorselIsle(d, path.join("images", "galeri", `galeri-${iki(++no)}.webp`), "Galeri (karışık)", true);
     if (no % 20 === 0) process.stdout.write(`  galeri ${no}\n`);
   }
   return atlananlar;
@@ -236,7 +246,7 @@ async function galeri(turHashleri: Set<string>) {
 
 async function digerGorseller() {
   for (const [kaynak, ad] of ciftlikGorselleri)
-    await gorselIsle(path.join(KAYNAK, "google-isletme", kaynak), path.join("images", "ciftlik", `${ad}.webp`), "Çiftlik (Google İşletme)");
+    await gorselIsle(path.join(KAYNAK, "google-isletme", kaynak), path.join("images", "ciftlik", `${ad}.webp`), "Çiftlik (Google İşletme)", true);
   for (const [kaynak, ad] of anasayfaGorselleri)
     await gorselIsle(path.join(KAYNAK, "resimler", kaynak), path.join("images", "anasayfa", `${ad}.webp`), "Ana sayfa seçkisi");
 }

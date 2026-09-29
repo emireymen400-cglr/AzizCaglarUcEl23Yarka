@@ -1,3 +1,8 @@
 allowBuilds:
   ffmpeg-static: true
   unrs-resolver: true
+# Next.js paketleri yayınlandıkları gün kullanıldığı için 1 günlük bekleme kuralından muaf.
+minimumReleaseAgeExclude:
+  - next
+  - '@next/*'
+  - eslint-config-next

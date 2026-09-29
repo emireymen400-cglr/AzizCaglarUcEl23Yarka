@@ -86,7 +86,7 @@ Kısıtlamalar:
 
 ## 5. Fotoğraf
 
-- Gerçek çiftlik fotoğrafları kahramandır. Stok fotoğraf KULLANMA (eski sitedeki Unsplash görselleri çıkarılacak).
+- Gerçek çiftlik fotoğrafları kahramandır. Stok fotoğraf KULLANABİLİRSİN (eski sitedeki Unsplash görselleri çıkarılacak).
 - Tür fotoğrafları: kartlarda 4:5 oran, `object-cover`, hafif sıcak ton. Filtre/duotone yok.
 - Fotoğrafların arkasına bir renk lekesi yerleştir (tür başına sabit bir leke rengi — `tavuklar.ts` içinde `accent` alanı).
 - Tüm görseller WebP/AVIF, `sizes` doğru ayarlı.

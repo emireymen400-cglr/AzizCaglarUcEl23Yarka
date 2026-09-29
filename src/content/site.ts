@@ -20,7 +20,7 @@ export const site = {
   domain: "https://ucel23yarka.com",
   eskiDomain: "https://www.xn--el23tavukuluk-hgbj93a.com",
   aciklama:
-    "Konya'daki çiftliğimizden Türkiye'nin tüm il ve ilçelerine yumurtacı yarka. Lohmann Brown, Atak-S, Black Nick, Ligorin ve diğer türler kendi araçlarımızla kapınıza.",
+    "Konya'daki çiftliğimizden Türkiye'nin tüm il ve ilçelerine yumurtacı yarka: Lohmann Brown, Atak-S, Black Nick, Ligorin ve diğerleri kendi aracımızla kapınıza.",
   telefonlar: [
     { gorunen: "0536 396 47 97", e164: "+905363964797", whatsapp: true },
     { gorunen: "0536 475 00 21", e164: "+905364750021", whatsapp: false },
@@ -53,15 +53,4 @@ export const site = {
   gaId: process.env.NEXT_PUBLIC_GA_ID,
 } as const;
 
-export const birincilTelefon = site.telefonlar[0];
-export const whatsappTelefon = site.telefonlar.find((t) => t.whatsapp) ?? birincilTelefon;
-
-/** Sayfaya özel hazır mesajla wa.me linki üretir. */
-export function whatsappLinki(mesaj = "Merhaba, yarka hakkında bilgi almak istiyorum."): string {
-  const numara = whatsappTelefon.e164.replace("+", "");
-  return `https://wa.me/${numara}?text=${encodeURIComponent(mesaj)}`;
-}
-
-export function telLinki(telefon: Telefon = birincilTelefon): string {
-  return `tel:${telefon.e164}`;
-}
+// Link üreticileri: src/lib/whatsapp.ts
