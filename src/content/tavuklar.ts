@@ -17,6 +17,15 @@ export type Ozellik = {
 
 export type Kaynak = { ad: string; url?: string };
 
+/** Örnek: { tutar: 1250, birim: "adet", not: "16 haftalık" } → "1.250 ₺ / adet" */
+export type Fiyat = {
+  /** Türk lirası, sadece rakam (nokta/virgül yok): 1250 */
+  tutar: number;
+  birim: string;
+  /** İsteğe bağlı kısa not: yaş, adet koşulu vb. */
+  not?: string;
+};
+
 export type EkBolum = {
   baslik: string;
   metin: string;
@@ -50,8 +59,11 @@ export type Tur = {
   sistem: string;
   gorseller: Gorsel[];
   accent: Accent;
-  /** Kullanıcı kararı: fiyatlar sık değiştiği için sitede fiyat yok (EKSIKLER.md #3) */
-  fiyat?: { tutar: number; birim: string };
+  /**
+   * Şu an hiçbir türde yok (fiyatlar sık değiştiği için; EKSIKLER.md #3).
+   * Girilirse tür sayfasında ve karşılaştırma tablosunda görünür, Google'a Offer olarak bildirilir.
+   */
+  fiyat?: Fiyat;
   seo: { title: string; description: string };
   whatsappMesaji: string;
   ekBolum?: EkBolum;

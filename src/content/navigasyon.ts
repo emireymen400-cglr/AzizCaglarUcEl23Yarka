@@ -1,4 +1,5 @@
 export const anaMenu = [
+  { ad: "Ana Sayfa", yol: "/" },
   { ad: "Tavuklarımız", yol: "/tavuklarimiz" },
   { ad: "Teslimat", yol: "/teslimat" },
   { ad: "Galeri", yol: "/galeri" },

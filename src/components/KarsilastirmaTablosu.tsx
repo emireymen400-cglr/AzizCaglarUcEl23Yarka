@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { YumurtaIsareti } from "@/components/ui/YumurtaIsareti";
 import type { Tur } from "@/content/tavuklar";
+import { fiyatMetni } from "@/lib/fiyat";
 
 type Sutun = { anahtar: keyof Tur; baslik: string };
 
 const sutunlar: Sutun[] = [
+  { anahtar: "fiyat", baslik: "Fiyat" },
   { anahtar: "yumurtaRengi", baslik: "Yumurta rengi" },
   { anahtar: "kullanim", baslik: "Kullanım" },
   { anahtar: "yillikVerim", baslik: "Verim" },
@@ -48,7 +50,7 @@ export function KarsilastirmaTablosu({ turler }: { turler: Tur[] }) {
                   </Link>
                 </th>
                 {gorunen.map((s) => {
-                  const deger = t[s.anahtar] as string | undefined;
+                  const deger = s.anahtar === "fiyat" ? (t.fiyat ? fiyatMetni(t.fiyat) : undefined) : (t[s.anahtar] as string | undefined);
                   return (
                     <td key={s.anahtar} className="py-4 pr-4">
                       {deger ? (

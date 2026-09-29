@@ -63,7 +63,7 @@ export function Header() {
     };
   }, [acik]);
 
-  const aktif = (hedef: string) => yol === hedef || yol.startsWith(`${hedef}/`);
+  const aktif = (hedef: string) => yol === hedef || (hedef !== "/" && yol.startsWith(`${hedef}/`));
 
   return (
     <header
@@ -84,7 +84,7 @@ export function Header() {
         </Link>
 
         <nav aria-label="Ana menü" className="hidden lg:block">
-          <ul className="flex items-center gap-7">
+          <ul className="flex items-center gap-5 xl:gap-7">
             {anaMenu.map((m) => (
               <li key={m.yol}>
                 <Link
@@ -157,11 +157,6 @@ export function Header() {
           </div>
           <nav aria-label="Mobil menü" className="mt-8">
             <ul className="space-y-1">
-              <li>
-                <Link href="/" className="block py-2 font-display text-[44px] uppercase leading-none tracking-[0.04em] text-indigo">
-                  Ana Sayfa
-                </Link>
-              </li>
               {anaMenu.map((m) => (
                 <li key={m.yol}>
                   <Link

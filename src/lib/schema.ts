@@ -54,7 +54,7 @@ export function breadcrumbSchema(adimlar: Kirinti[]): JsonLd {
   };
 }
 
-/** Fiyat kullanıcı kararıyla yok → Offer EKLENMEZ (CLAUDE.md §5). */
+/** Offer yalnızca tavuklar.ts'de fiyat girilmişse eklenir; uydurma fiyat yok (CLAUDE.md §5). */
 export function urunSchema(tur: Tur): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -69,6 +69,19 @@ export function urunSchema(tur: Tur): JsonLd {
       { "@type": "PropertyValue", name: "Yumurta rengi", value: tur.yumurtaRengi },
       { "@type": "PropertyValue", name: "Kullanım", value: tur.kullanim },
     ],
+    ...(tur.fiyat
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: tur.fiyat.tutar,
+            priceCurrency: "TRY",
+            availability: "https://schema.org/InStock",
+            url: tamUrl(`/tavuklarimiz/${tur.slug}`),
+            seller: { "@id": tamUrl("/#isletme") },
+            ...(tur.fiyat.not ? { description: tur.fiyat.not } : {}),
+          },
+        }
+      : {}),
   };
 }
 

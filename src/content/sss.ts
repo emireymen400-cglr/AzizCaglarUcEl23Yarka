@@ -82,7 +82,7 @@ export const sorular: Soru[] = [
     oneCikan: true,
     soru: "Fiyatlarınız nasıl belirleniyor? Toplu alımda indirim var mı?",
     cevap:
-      "Fiyat; türe, yarkanın yaşına, adede ve teslimat bölgesine göre değişir ve sık güncellenir. Bu yüzden sitede fiyat yazmıyoruz. Toplu siparişlerde adede göre ayrıca fiyat veriyoruz. Güncel fiyat için bizi arayın ya da WhatsApp'tan yazın.",
+      "Fiyat; türe, yarkanın yaşına, adede ve teslimat bölgesine göre değişir. Toplu siparişlerde adede göre ayrıca fiyat veriyoruz. Fiyat ve güncel stok bilgisi için bizi arayabilir veya WhatsApp üzerinden yazabilirsiniz. Size mevcut yarka çeşitleri ve sipariş seçenekleri hakkında güncel bilgi verelim.",
   },
   {
     id: "whatsapp-siparis",

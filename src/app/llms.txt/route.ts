@@ -13,7 +13,7 @@ export function GET() {
     "",
     `> ${site.aciklama}`,
     "",
-    `${site.tamAd} (${site.sahip}), ${site.adres.ilce} / ${site.adres.il} merkezli bir yumurtacı yarka (genç dişi tavuk) üreticisidir. Canlı yarka satışı yapar; fiyatlar sık değiştiği için sitede fiyat yayınlanmaz, telefon veya WhatsApp ile bilgi verilir.`,
+    `${site.tamAd} (${site.sahip}), ${site.adres.ilce} / ${site.adres.il} merkezli bir yumurtacı yarka (genç dişi tavuk) üreticisidir. Canlı yarka satışı yapar; fiyat ve güncel stok bilgisi telefon veya WhatsApp üzerinden verilir.`,
     "",
     "## Hizmet bölgesi ve teslimat",
     "",

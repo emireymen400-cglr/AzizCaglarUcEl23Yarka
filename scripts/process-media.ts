@@ -233,11 +233,21 @@ async function turler() {
   return hashler;
 }
 
+/**
+ * Galeri numaraları bu dosyada kalıcı tutulur: mevcut fotoğraflar numarasını korur, yeni eklenen
+ * fotoğraf (adı ne olursa olsun) sıradaki boş numarayı alır. Böylece src/content/galeri.ts'deki
+ * alt metinler kaymaz. Silinen fotoğrafın numarası tekrar kullanılmaz.
+ */
+const GALERI_SIRA = path.join(KOK, "scripts", "galeri-sira.json");
+
 async function galeri(turHashleri: Set<string>) {
   const dizin = path.join(KAYNAK, "resimler");
   const gorulen = new Set<string>();
   const atlananlar: { dosya: string; neden: string }[] = [];
-  let no = 0;
+  const sira: Record<string, number> = fs.existsSync(GALERI_SIRA) ? JSON.parse(fs.readFileSync(GALERI_SIRA, "utf8")) : {};
+  let enBuyuk = Math.max(0, ...Object.values(sira));
+  const yeniler: string[] = [];
+  let islenen = 0;
   for (const f of siraliDosyalar(dizin)) {
     const d = path.join(dizin, f);
     if (galeriHaric[f]) { atlananlar.push({ dosya: f, neden: galeriHaric[f] }); continue; }
@@ -245,8 +255,19 @@ async function galeri(turHashleri: Set<string>) {
     if (turHashleri.has(h)) { atlananlar.push({ dosya: f, neden: "tür klasöründeki bir görselin aynısı" }); continue; }
     if (gorulen.has(h)) { atlananlar.push({ dosya: f, neden: "galerideki başka bir görselin aynısı" }); continue; }
     gorulen.add(h);
-    await gorselIsle(d, path.join("images", "galeri", `galeri-${iki(++no)}.webp`), "Galeri (karışık)", true);
-    if (no % 20 === 0) process.stdout.write(`  galeri ${no}\n`);
+    let no = sira[f];
+    if (!no) {
+      no = sira[f] = ++enBuyuk;
+      yeniler.push(`galeri-${iki(no)} ← ${f}`);
+    }
+    await gorselIsle(d, path.join("images", "galeri", `galeri-${iki(no)}.webp`), "Galeri (karışık)", true);
+    if (++islenen % 20 === 0) process.stdout.write(`  galeri ${islenen}\n`);
+  }
+  fs.writeFileSync(GALERI_SIRA, JSON.stringify(sira, null, 2) + "\n");
+  // İlk çalıştırmada (dosya yokken) herkes "yeni"dir; o durumda uyarı basılmaz
+  if (yeniler.length && Object.keys(sira).length > yeniler.length) {
+    console.log("\n  YENİ GALERİ FOTOĞRAFLARI — src/content/galeri.ts → karisikAltlar'a alt metin ekleyin:");
+    for (const y of yeniler) console.log(`    ${y}`);
   }
   return atlananlar;
 }

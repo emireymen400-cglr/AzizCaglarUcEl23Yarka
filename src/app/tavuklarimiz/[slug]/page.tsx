@@ -19,6 +19,7 @@ import { Section } from "@/components/ui/Section";
 import { gorselBoyutlari } from "@/content/media.generated";
 import { sorular as tumSorular } from "@/content/sss";
 import { tavuklar, turBul, turSluglari, type Gorsel, type Tur } from "@/content/tavuklar";
+import { fiyatMetni } from "@/lib/fiyat";
 import { sayfaMeta } from "@/lib/metadata";
 import { urunSchema } from "@/lib/schema";
 import { birincilTelefon, olaylar, telLinki, whatsappLinki } from "@/lib/whatsapp";
@@ -45,6 +46,7 @@ export async function generateMetadata({ params }: PageProps<"/tavuklarimiz/[slu
 /** Bilgi satırları: veride olmayan satır hiç render edilmez. */
 function bilgiSatirlari(t: Tur) {
   return [
+    ["Fiyat", t.fiyat ? fiyatMetni(t.fiyat) + (t.fiyat.not ? ` (${t.fiyat.not})` : "") : undefined],
     ["Yumurta rengi", t.yumurtaRengi],
     ["Kullanım", t.kullanim],
     ["Tür", t.tip],
@@ -125,7 +127,15 @@ export default async function TurSayfasi({ params }: PageProps<"/tavuklarimiz/[s
                   {birincilTelefon.gorunen}
                 </Button>
               </div>
-              <p className="mt-4 text-sm text-ink/75">Fiyat ve güncel stok için arayın ya da yazın; fiyatlar sık değiştiği için sitede yer almıyor.</p>
+              {tur.fiyat ? (
+                <p className="mt-4 text-lg">
+                  <span className="font-semibold text-indigo">{fiyatMetni(tur.fiyat)}</span>
+                  {tur.fiyat.not ? <span className="text-ink/75"> · {tur.fiyat.not}</span> : null}
+                  <span className="mt-1 block max-w-prose text-sm text-ink/75">Fiyat ve güncel stok bilgisi için bizi arayabilir veya WhatsApp üzerinden yazabilirsiniz. Size mevcut yarka çeşitleri ve sipariş seçenekleri hakkında güncel bilgi verelim.</span>
+                </p>
+              ) : (
+                <p className="mt-4 max-w-prose text-sm text-ink/75">Fiyat ve güncel stok bilgisi için bizi arayabilir veya WhatsApp üzerinden yazabilirsiniz. Size mevcut yarka çeşitleri ve sipariş seçenekleri hakkında güncel bilgi verelim.</p>
+              )}
             </div>
             <div className="relative order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-md">
               <Blob renk={tur.accent} sekil={0} dondur={15} belir className="absolute -right-16 -top-12 w-[110%]" />
