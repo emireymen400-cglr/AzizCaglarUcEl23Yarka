@@ -46,7 +46,7 @@ export function Footer() {
             <nav aria-label="Sayfalar">
               <h2 className={baslik}>Sayfalar</h2>
               <ul className="mt-4 space-y-2">
-                {[...anaMenu, altMenu[0]].map((m) => (
+                {anaMenu.map((m) => (
                   <li key={m.yol}>
                     <Link href={m.yol} className={link}>
                       {m.ad}
@@ -87,7 +87,7 @@ export function Footer() {
                 </li>
                 <li className="text-white/85">{site.calismaSaatleri.metin}</li>
               </ul>
-              <ul className="mt-6 flex gap-3" aria-label="Sosyal medya">
+              <ul className="mt-6 flex flex-wrap gap-3" aria-label="Sosyal medya">
                 {site.sosyal.map((s) => (
                   <li key={s.ad}>
                     <a
@@ -111,7 +111,7 @@ export function Footer() {
               © {new Date().getFullYear()} {site.tamAd} · {site.sahip}
             </p>
             <ul className="flex flex-wrap gap-x-6 gap-y-2">
-              {altMenu.slice(1).map((m) => (
+              {altMenu.map((m) => (
                 <li key={m.yol}>
                   <Link href={m.yol} className="hover:underline underline-offset-4">
                     {m.ad}

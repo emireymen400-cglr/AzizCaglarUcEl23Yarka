@@ -31,9 +31,30 @@ export function FacebookIkon({ className }: P) {
   );
 }
 
+export function YouTubeIkon({ className }: P) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden focusable="false" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinejoin="round" className={className}>
+      <rect x="2.5" y="5" width="19" height="14" rx="4" />
+      <path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor" />
+    </svg>
+  );
+}
+
+/** TikTok notası — kontur. */
+export function TikTokIkon({ className }: P) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden focusable="false" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M13.5 3v11.8a3.3 3.3 0 1 1-3.3-3.3" />
+      <path d="M13.5 3c.4 2.6 2.2 4.4 5 4.6" />
+    </svg>
+  );
+}
+
 export function SosyalIkon({ ad, className }: { ad: SosyalHesap["ad"]; className?: string }) {
   if (ad === "Instagram") return <InstagramIkon className={className} />;
   if (ad === "Facebook") return <FacebookIkon className={className} />;
+  if (ad === "YouTube") return <YouTubeIkon className={className} />;
+  if (ad === "TikTok") return <TikTokIkon className={className} />;
   // Kullanıcının verdiği Sahibinden logosu (sarı kare, siyah S)
   // eslint-disable-next-line @next/next/no-img-element -- 1,4 KB hazır ikon
   return <img src="/images/sosyal/sahibinden.webp" alt="" width={96} height={96} className={cn("rounded-[4px]", className)} />;

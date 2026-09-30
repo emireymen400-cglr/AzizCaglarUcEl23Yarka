@@ -111,7 +111,7 @@ SSS sayfası, Google için hazırlanan SSS verisi ve tür sayfalarındaki sorula
 Telefon numaraları, WhatsApp hattı, adres, harita konumu, çalışma saatleri ve sosyal medya linkleri **sadece bu dosyada** yazılıdır. Buradaki değişiklik header, footer, iletişim sayfası, WhatsApp butonları, KVKK metni ve Google bilgilerinin hepsine otomatik yansır.
 
 - **Telefon:** `telefonlar` listesinde `gorunen` ekranda görünen biçimdir (`"0536 396 47 97"`). `e164` arama linki için kullanılır, başında `+90` olur, boşluk içermez (`"+905363964797"`). İkisini birlikte değiştirin. `whatsapp: true` olan numara WhatsApp hattıdır.
-- **Yeni sosyal hesap** (TikTok, YouTube açılınca): Bu, sitede ikon eklemeyi de gerektirir; geliştiriciye iletin (bkz. `EKSIKLER.md`).
+- **Yeni sosyal hesap** (Instagram, Facebook, YouTube, TikTok ve Sahibinden dışında bir platform): Bu, sitede ikon eklemeyi de gerektirir; geliştiriciye iletin.
 
 ### 1.6 Tür açıklamalarını değiştirmek
 

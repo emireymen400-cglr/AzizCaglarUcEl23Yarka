@@ -84,7 +84,7 @@ Tüm URL'ler küçük harf, Türkçe karaktersiz, tireli.
 
 ## 5. SEO gereksinimleri (hepsi zorunlu)
 
-- `app/layout.tsx`: `<html lang="tr">`, `metadataBase`, başlık şablonu `%s | Üçel 23 Yarka`, varsayılan OG görseli
+- `app/layout.tsx`: `<html lang="tr">`, `metadataBase`, başlık şablonu `Üçel 23 Yarka - %s` (kullanıcı isteği, 30.09.2026; `tamBaslik()` src/lib/metadata.ts), varsayılan OG görseli
 - Her sayfada `generateMetadata`: benzersiz title (≤60 karakter), description (≤155 karakter), canonical, OpenGraph, Twitter
 - `app/sitemap.ts` → içerikten otomatik (türler dahil, `lastModified` ile)
 - `app/robots.ts` → her şeye izin, sitemap adresi; preview ortamlarında (`VERCEL_ENV !== "production"`) `noindex`

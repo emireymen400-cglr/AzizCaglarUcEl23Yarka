@@ -5,8 +5,8 @@ Son güncelleme: 2026-09-29 (yayın öncesi denetim sonrası).
 ## Açık kalanlar (sonra sorulacak / hatırlatılacak)
 
 - [ ] **Barındırma:** Kullanıcı Vercel'i seçti (2026-09-29). Not: Vercel Hobby koşullarında "ürün/hizmet satışının tanıtımı" ticari kullanım sayılıyor; kullanıcı bilgilendirildi. Emin olmak için Vercel Support'a sorulabilir (vercel.com/help). Gerekirse ücretsiz alternatif: Cloudflare Pages (statik dışa aktarım).
-- [ ] **TikTok / YouTube** — hesaplar açılınca eklenecek (şu an sitede GÖSTERİLMEYECEK).
-- [ ] **EN SON YAPILACAK — YouTube:** Kullanıcı YouTube kanalı açacak. Açılınca `ciftlik-kahverengi-yumurtacilar-01` (100 sn) ve `-03` (85 sn) YouTube'a taşınacak, `lite-youtube` ile gömülecek, VideoObject'e YouTube URL'si eklenecek; kanal linki `site.ts` sosyal hesaplara eklenecek. Şimdilik CRF 32 ile 8,9 / 7,6 MB olarak sitede.
+- [x] **TikTok / YouTube** — hesaplar eklendi (30.09.2026): youtube.com/@ÜÇEL23YARKA42, tiktok.com/@ucel23yarka.
+- [ ] **EN SON YAPILACAK — YouTube:** Kullanıcı YouTube kanalı açacak. 30.09.2026 kararı: kendi çekimi olan 10 çiftlik videosunun (`ciftlik-*`) hepsi YouTube'a taşınacak, tıklayınca yüklenen YouTube gömmesiyle gösterilecek, VideoObject'e YouTube URL'si eklenecek, `public/videos/ciftlik-*` dosyaları silinecek; kanal linki `site.ts` sosyal hesaplara eklenecek. 5 stok video YouTube'a yüklenmez (hero sitede kalır).
 - [ ] **Vercel kotası:** Uygulandı: videolar tıklayınca yüklenir (hero hariç, o da sayfa yüklendikten sonra), galeri hazır küçük görseller (360/640px) kullanır, next/image yalnızca ~40 görsel için. Yayından sonra Vercel → Usage sayfası kontrol edilecek.
 - [ ] **Yayından sonra PageSpeed Insights:** Yerel Lighthouse (HTTP/1.1, gzip) mobil Performance: ana sayfa 88, tür 92–93, galeri 85–86. Vercel'de (HTTP/2, Brotli, CDN) pagespeed.web.dev ile tekrar ölçülecek; 90 altı kalırsa hero posteri ve galeri ilk satırı yeniden ele alınacak.
 - [ ] **GA4 panel ayarı:** Admin → Özel tanımlar: `sayfa_yolu` ve `tur` etkinlik kapsamlı boyut olarak eklenmeli; Vercel'e `NEXT_PUBLIC_GA_ID` ortam değişkeni girilmeli.
@@ -72,7 +72,7 @@ Sayfa bazlı yönlendirmeler (`/kurumsal` → `/hakkimizda` vb.) sitede hazır (
    - Ücret için arayın/yazın.
 6. **Aşı / belgeler:** Aşılar yapılıyor. Belgeler istenirse arayarak talep edilebilir. (Eski sitede şu ifade var: "veteriner hekim onayı ve tam aşı takvimi tamamlanmadan" teslim edilmez.)
 7. **Çalışma saatleri:** Esnek, 7/24 ulaşılabilir. (JSON-LD `openingHours`: Mo-Su 00:00-23:59.)
-8. **Sosyal medya:** Facebook, Instagram ve Sahibinden var. TikTok ve YouTube henüz yok.
+8. **Sosyal medya:** Facebook, Instagram, YouTube, TikTok ve Sahibinden var.
 9. **Google İşletme:** https://share.google/T7QTrXCC1Dnaex3oc — içindeki resim ve videolar çiftlikten çekilmiş, kullanılabilir.
 10. **Unvan / vergi:** Sonra verilecek.
 11. **GA4:** `G-0167JEGVL4` (`NEXT_PUBLIC_GA_ID`). Search Console domain alınınca kurulacak.

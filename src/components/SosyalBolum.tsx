@@ -4,7 +4,7 @@ import { SosyalIkon } from "@/components/ui/MarkaIkonlari";
 import { Section } from "@/components/ui/Section";
 import { site } from "@/content/site";
 
-/** Ana sayfanın altında: Instagram, Facebook ve Sahibinden hesapları. */
+/** Ana sayfanın altında: site.ts içindeki tüm sosyal hesaplar. */
 export function SosyalBolum() {
   return (
     <Section aria-labelledby="sosyal-baslik" className="pt-0 md:pt-0">
@@ -14,7 +14,7 @@ export function SosyalBolum() {
           Bizi takip edin
         </h2>
         <p className="mt-3 max-w-prose">Yeni gelen sürüleri ve teslimatlarımızı sosyal medya hesaplarımızdan takip edebilirsiniz.</p>
-        <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-3">
           {site.sosyal.map((s) => (
             <li key={s.ad}>
               <a

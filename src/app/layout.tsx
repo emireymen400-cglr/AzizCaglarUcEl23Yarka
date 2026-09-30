@@ -5,14 +5,15 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { site } from "@/content/site";
 import { fontDegiskenleri } from "@/lib/fonts";
+import { tamBaslik } from "@/lib/metadata";
 import { isletmeSchema } from "@/lib/schema";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
   title: {
-    default: "Yumurtacı Yarka Satışı, Türkiye Geneli | Üçel 23 Yarka",
-    template: "%s | Üçel 23 Yarka",
+    default: tamBaslik("Yumurtacı Yarka Satışı, Türkiye Geneli"),
+    template: tamBaslik("%s"),
   },
   description: site.aciklama,
   applicationName: site.ad,

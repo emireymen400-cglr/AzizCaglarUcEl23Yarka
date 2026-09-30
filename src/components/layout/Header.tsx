@@ -168,11 +168,6 @@ export function Header() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link href="/hakkimizda" className="block py-1.5 font-display text-[30px] uppercase leading-none tracking-[0.04em] text-indigo">
-                  Hakkımızda
-                </Link>
-              </li>
             </ul>
           </nav>
           <div className="mt-auto space-y-3 pt-10">

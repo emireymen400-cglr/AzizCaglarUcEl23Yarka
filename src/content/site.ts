@@ -9,7 +9,7 @@ export type Telefon = {
 };
 
 export type SosyalHesap = {
-  ad: "Instagram" | "Facebook" | "Sahibinden";
+  ad: "Instagram" | "Facebook" | "YouTube" | "TikTok" | "Sahibinden";
   url: string;
   /** Ana sayfadaki takip bölümünde görünen kısa açıklama */
   aciklama: string;
@@ -48,8 +48,11 @@ export const site = {
   },
   sosyal: [
     { ad: "Instagram", url: "https://www.instagram.com/ucel23yarka/", aciklama: "@ucel23yarka" },
-    // Kullanıcı bu linki kalıcı Facebook adresi olarak onayladı (2026-09-29)
+    // Kullanıcının verdiği Facebook profili (2026-09-29)
     { ad: "Facebook", url: "https://www.facebook.com/aziz.caglar.1614", aciklama: "Facebook sayfamız" },
+    // Kullanıcı YouTube ve TikTok hesaplarını verdi (2026-09-30)
+    { ad: "YouTube", url: "https://www.youtube.com/@%C3%9C%C3%87EL23YARKA42", aciklama: "Çiftlik videolarımız" },
+    { ad: "TikTok", url: "https://www.tiktok.com/@ucel23yarka", aciklama: "@ucel23yarka" },
     { ad: "Sahibinden", url: "https://ucel23tavukculuk.sahibinden.com/", aciklama: "Sahibinden mağazamız" },
   ] satisfies SosyalHesap[],
   googleIsletme: "https://share.google/T7QTrXCC1Dnaex3oc",
